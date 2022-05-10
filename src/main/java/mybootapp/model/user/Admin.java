@@ -1,12 +1,12 @@
-package mybootapp.model;
+package mybootapp.model.user;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import mybootapp.model.Repository;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotEmpty;
 
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Getter
 @NoArgsConstructor
-public class Admin extends User{
+public class Admin extends User {
 
     @NotEmpty(message = "Key authentication is required")
     int key;

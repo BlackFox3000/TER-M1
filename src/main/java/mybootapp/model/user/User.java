@@ -1,4 +1,4 @@
-package mybootapp.model;
+package mybootapp.model.user;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

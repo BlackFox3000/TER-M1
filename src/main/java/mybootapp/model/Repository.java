@@ -2,6 +2,7 @@ package mybootapp.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import mybootapp.model.user.Teacher;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

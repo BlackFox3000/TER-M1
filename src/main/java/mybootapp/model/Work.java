@@ -2,6 +2,7 @@ package mybootapp.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import mybootapp.model.status.StatusW;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -32,12 +33,12 @@ public class Work implements Serializable {
     public String commentary;
 
     @Column(nullable = false)
-    public Status status;
+    public StatusW statusW;
 
     public Work(String title, ArrayList<String> subjects){
         this.title = title;
         this.subjects = subjects;
         this.commentary = "";
-        this.status = Status.DELIVERED;
+        this.statusW = StatusW.DELIVERED;
     }
 }

@@ -1,7 +1,8 @@
-package mybootapp.model;
+package mybootapp.model.user;
 
 import lombok.*;
-import lombok.experimental.FieldDefaults;
+import mybootapp.model.Repository;
+import mybootapp.model.Work;
 
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ public class Student extends User {
         this.personnalWorks = new ArrayList<>();
     }
 
-    public void uploadWork(Repository repo,Work work){
+    public void uploadWork(Repository repo, Work work){
         repo.works.add(work);
         personnalWorks.add(work);
     }

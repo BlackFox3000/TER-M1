@@ -1,7 +1,9 @@
-package mybootapp.model;
+package mybootapp.model.user;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import mybootapp.model.Repository;
+import mybootapp.model.Work;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 @Data
 @Getter
 @NoArgsConstructor
-public class Teacher extends User{
+public class Teacher extends User {
 
     @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")
