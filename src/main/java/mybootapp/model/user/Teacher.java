@@ -3,6 +3,7 @@ package mybootapp.model.user;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import mybootapp.model.Repository;
+import mybootapp.model.Subject;
 import mybootapp.model.Work;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ public class Teacher extends User {
 
     @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")
-    ArrayList<String> subjects;
+    ArrayList<Subject> subjects;
 
     @Column(name = "supportedWorks")
     ArrayList<Work> supportedWorks;
@@ -27,13 +28,13 @@ public class Teacher extends User {
     @Column(name = "repositories")
     ArrayList<Repository> repositories;
 
-    public Teacher(ArrayList<String> subjects){
+    public Teacher(ArrayList<Subject> subjects){
         this.subjects = subjects;
         this.supportedWorks = new ArrayList<>();
         this.repositories = new ArrayList<>();
     }
 
-    public void createRepository(String name, ArrayList<String> subjects){
+    public void createRepository(String name, ArrayList<Subject> subjects){
         //mettre le nouveau repo dans la bdd
         Repository repo = new Repository(name,subjects,this);
         repositories.add(repo);

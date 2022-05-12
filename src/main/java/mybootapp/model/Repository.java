@@ -2,6 +2,7 @@ package mybootapp.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import mybootapp.model.status.StatusR;
 import mybootapp.model.user.Teacher;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Repository implements Serializable {
 
     @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")
-    public ArrayList<String> subjects;
+    public ArrayList<Subject> subjects;
 
     @Column(name = "works")
     public ArrayList<Work> works;
@@ -36,10 +37,10 @@ public class Repository implements Serializable {
     @NotEmpty(message = "Teacher Owner is required")
     Teacher teacherOwner;
 
-    @Column(nullable = false, name="isClosed")
-    public boolean isClosed;
+    @Column(nullable = false, name="status")
+    StatusR statusR ;
 
-    public Repository(String name, ArrayList<String> subjects, Teacher teacherOwner){
+    public Repository(String name, ArrayList<Subject> subjects, Teacher teacherOwner){
          this.name = name;
          this.subjects = subjects;
          this.teacherOwner = teacherOwner;

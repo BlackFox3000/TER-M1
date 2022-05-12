@@ -3,6 +3,7 @@ package mybootapp.model;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import mybootapp.model.status.StatusW;
+import mybootapp.model.user.Teacher;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -35,10 +36,14 @@ public class Work implements Serializable {
     @Column(nullable = false)
     public StatusW statusW;
 
+    @Column(name = "canceledTeachers")
+    ArrayList<Teacher> canceledTeachers;
+
     public Work(String title, ArrayList<String> subjects){
         this.title = title;
         this.subjects = subjects;
         this.commentary = "";
         this.statusW = StatusW.DELIVERED;
+        this.canceledTeachers = new ArrayList<>();
     }
 }
