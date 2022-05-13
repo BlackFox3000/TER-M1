@@ -3,6 +3,7 @@ package mybootapp.model.user;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import mybootapp.model.Repository;
+import mybootapp.model.StudentList;
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
 
@@ -28,10 +29,15 @@ public class Teacher extends User {
     @Column(name = "repositories")
     ArrayList<Repository> repositories;
 
+    @Column(name = "studentLists")
+    ArrayList<StudentList> studentLists;
+
+
     public Teacher(ArrayList<Subject> subjects){
         this.subjects = subjects;
         this.supportedWorks = new ArrayList<>();
         this.repositories = new ArrayList<>();
+        this.studentLists = new ArrayList<>();
     }
 
     public void createRepository(String name, ArrayList<Subject> subjects){
@@ -44,7 +50,7 @@ public class Teacher extends User {
         work.setCommentary(work.getCommentary() + message);
     }
 
-    public void attributerWorks(Repository repo){
+    public void attributeWorks(Repository repo){
         //appeller l'algo principal
     }
 }

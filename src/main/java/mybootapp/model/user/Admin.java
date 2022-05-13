@@ -32,7 +32,7 @@ public class Admin extends User {
         //valide les privilèges de l'utilisateur avec la mail
     }
 
-    public void attributerWorks(Repository repo){
+    public void attributeWorks(Repository repo){
         //appeller l'algo principal
     }
 }

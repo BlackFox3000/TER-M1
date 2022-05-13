@@ -16,16 +16,16 @@ import java.util.ArrayList;
 @Getter
 @NoArgsConstructor
 @Table(name = "studentslists")
-public class StudentsList {
+public class StudentList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(nullable = false, name = "list")
-    public ArrayList<Student> studentsList;
+    public ArrayList<Student> studentList;
 
-    public StudentsList(ArrayList<Student> studentsList){
-        this.studentsList = studentsList;
+    public StudentList(ArrayList<Student> studentList){
+        this.studentList = studentList;
     }
 }
