@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @Data
 @Getter
 @NoArgsConstructor
-public class Teacher extends User {
+public class Teacher extends UserApp {
 
     @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")

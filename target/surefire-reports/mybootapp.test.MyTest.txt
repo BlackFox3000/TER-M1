@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: mybootapp.test.MyTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.009 s - in mybootapp.test.MyTest
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.768 s <<< FAILURE! - in mybootapp.test.MyTest
+whenSavingWork_thenCorrect  Time elapsed: 0.01 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Mémoire sur Thalès> but was: <pythagore>
+	at mybootapp.test.MyTest.whenSavingWork_thenCorrect(MyTest.java:67)
+

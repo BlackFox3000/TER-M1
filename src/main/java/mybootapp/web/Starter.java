@@ -18,17 +18,7 @@ import mybootapp.repo.CourseRepository;
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = CourseRepository.class)
 @EntityScan(basePackageClasses = Course.class)
-public class Starter extends SpringBootServletInitializer implements WebMvcConfigurer {
-
-	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
-		super.onStartup(servletContext);
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Starter.class);
-	}
+public class Starter implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Starter.class, args);

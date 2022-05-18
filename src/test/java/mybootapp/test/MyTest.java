@@ -17,7 +17,6 @@ import mybootapp.web.Starter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 
@@ -65,7 +64,7 @@ public class MyTest {
 		wr.save(new Work("pythagore", subjects));
 		Work work = wr.findById(1L).orElseGet(()
 				-> new Work("thalès", subjects));
-		assert(Objects.equals(work.getTitle(), "pythagore"));
+		assertEquals(work.getTitle(),"pythagore");
 	}
 
 	@Test

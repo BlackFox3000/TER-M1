@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Getter
 @NoArgsConstructor
-public class Admin extends User {
+public class Admin extends UserApp {
 
     @NotEmpty(message = "Key authentication is required")
     int key;
