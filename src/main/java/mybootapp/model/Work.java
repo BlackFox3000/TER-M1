@@ -28,7 +28,7 @@ public class Work implements Serializable {
 
     @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")
-    ArrayList<String> subjects;
+    ArrayList<Subject> subjects;
 
     @Column(name = "commentary")
     public String commentary;
@@ -39,7 +39,8 @@ public class Work implements Serializable {
     @Column(name = "canceledTeachers")
     ArrayList<Teacher> canceledTeachers;
 
-    public Work(String title, ArrayList<String> subjects){
+    public Work(String title, ArrayList<Subject> subjects){
+        super();
         this.title = title;
         this.subjects = subjects;
         this.commentary = "";

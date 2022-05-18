@@ -34,6 +34,7 @@ public class Teacher extends User {
 
 
     public Teacher(ArrayList<Subject> subjects){
+        super();
         this.subjects = subjects;
         this.supportedWorks = new ArrayList<>();
         this.repositories = new ArrayList<>();

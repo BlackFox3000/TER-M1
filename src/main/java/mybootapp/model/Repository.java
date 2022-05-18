@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
@@ -40,7 +41,10 @@ public class Repository implements Serializable {
     @Column(nullable = false, name="status")
     StatusR statusR ;
 
+    Date endDate;
+
     public Repository(String name, ArrayList<Subject> subjects, Teacher teacherOwner){
+            super();
          this.name = name;
          this.subjects = subjects;
          this.teacherOwner = teacherOwner;

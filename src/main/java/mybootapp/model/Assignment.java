@@ -40,6 +40,7 @@ public class Assignment implements Serializable {
     public StatusA statusA;
 
     public Assignment(String name,ArrayList<Teacher> teachers, ArrayList<Repository> repositories){
+        super();
         this.name = name;
         this.teachers = teachers;
         this.repositories = repositories;

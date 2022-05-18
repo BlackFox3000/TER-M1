@@ -34,6 +34,7 @@ public class User implements Serializable {
     String password;
 
     public User(String mail, String password){
+        super();
         this.mail = mail;
         this.password = password;
     }

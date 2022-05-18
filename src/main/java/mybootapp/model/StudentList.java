@@ -26,6 +26,7 @@ public class StudentList {
     public ArrayList<Student> studentList;
 
     public StudentList(ArrayList<Student> studentList){
+        super();
         this.studentList = studentList;
     }
 }
