@@ -21,7 +21,11 @@ public class MyControler {
 	 */
 	@RequestMapping("")
 	public ModelAndView index() {
-		return new ModelAndView("index", "message", message);
+		System.out.println("MyControler");
+		var model = new ModelAndView("index");
+		System.out.println("MyControler 2");
+
+		return model;
 	}
 
 }
