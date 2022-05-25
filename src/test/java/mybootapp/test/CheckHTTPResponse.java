@@ -1,6 +1,6 @@
 package mybootapp.test;
 
-import mybootapp.web.Starter;
+import mybootapp.Starter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@ public class CheckHTTPResponse {
     @Test
     public void shouldPassIfStringMatches(){
         assertEquals("Hello World from Spring Boot",
-                testRestTemplate.getForObject("http://localhost" + port + "/",
+                testRestTemplate.getForObject("http://localhost:" + port + "/hellotest",
                         String.class));
     }
 }

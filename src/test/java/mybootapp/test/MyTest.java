@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
+import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import mybootapp.model.Course;
 import mybootapp.repo.CourseRepository;
-import mybootapp.web.Starter;
+import mybootapp.Starter;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +40,6 @@ public class MyTest {
 	@Autowired
 	WorkRepository wr;
 
-
-
 	@Test
 	public void whenFindingWorkById_thenCorrect() {
 		ArrayList<Subject> subjects = new ArrayList<>();
@@ -52,24 +52,26 @@ public class MyTest {
 	public void whenFindingAllWorks_thenCorrect() {
 		ArrayList<Subject> subjects = new ArrayList<>();
 		subjects.add(new Subject("Maths"));
+		ArrayList<Subject> subjects2 = new ArrayList<>();
+		subjects2.add(new Subject("Biologie"));
 		wr.save(new Work("Mémoire sur Thalès", subjects));
-		wr.save(new Work("Mémoire sur Gauss", subjects));
+		wr.save(new Work("Mémoire sur Gauss", subjects2));
 		assertInstanceOf(List.class,wr.findAll());
 	}
 
+	@Autowired
+	SubjectRepository sr;
+
 	@Test
+	@Transactional
 	public void whenSavingWork_thenCorrect() {
 		ArrayList<Subject> subjects = new ArrayList<>();
-		subjects.add(new Subject("Maths"));
+		Subject sub = new Subject("Maths");
+		sr.save(sub);
+		subjects.add(sub);
 		wr.save(new Work("pythagore", subjects));
 		Work work = wr.findById(1L).orElseGet(()
 				-> new Work("thalès", subjects));
 		assertEquals(work.getTitle(),"pythagore");
 	}
-
-	@Test
-	public void trueTest() {
-		assert(2==2);
-	}
-
 }

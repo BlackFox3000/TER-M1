@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
+<%@ include file="header.jsp"%>
 
 <c:url var="list" value="/course/list" />
 <c:url var="newCourse" value="/course/new" />
@@ -21,4 +21,4 @@
 	</c:forEach>
 </div>
 
-<%@ include file="/WEB-INF/jsp/footer.jsp"%>
+<%@ include file="footer.jsp"%>

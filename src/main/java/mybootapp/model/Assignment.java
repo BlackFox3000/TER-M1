@@ -13,33 +13,33 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
 @NoArgsConstructor
-@Table(name = "assignments")
 public class Assignment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, name = "name")
+
     @NotEmpty(message = "A name is required")
     String name;
 
-    @Column(name = "teachers")
-    public ArrayList<Teacher> teachers;
+    @OneToMany
+    public List<Teacher> teachers;
 
-    @Column(name = "repositories")
-    public ArrayList<Repository> repositories;
+    @OneToMany
+    public List<Repository> repositories;
 
     @Column(nullable = false)
     public StatusA statusA;
 
-    public Assignment(String name,ArrayList<Teacher> teachers, ArrayList<Repository> repositories){
+    public Assignment(String name,List<Teacher> teachers, List<Repository> repositories){
         super();
         this.name = name;
         this.teachers = teachers;

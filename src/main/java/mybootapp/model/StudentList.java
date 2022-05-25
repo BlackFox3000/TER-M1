@@ -8,24 +8,29 @@ import lombok.experimental.FieldDefaults;
 import mybootapp.model.user.Student;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
 @NoArgsConstructor
-@Table(name = "studentslists")
-public class StudentList {
+public class StudentList implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, name = "list")
-    public ArrayList<Student> studentList;
+    @Basic(optional = false)
+    String name;
 
-    public StudentList(ArrayList<Student> studentList){
+    @JoinColumn(name = "listxx")
+    @OneToMany(cascade = CascadeType.MERGE)
+    public List<Student> studentList;
+
+    public StudentList(List<Student> studentList){
         super();
         this.studentList = studentList;
     }

@@ -10,40 +10,38 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
 @NoArgsConstructor
-@Table(name = "repositories")
 public class Repository implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, name = "name")
     @NotEmpty(message = "Name is required")
     String name;
 
-    @Column(nullable = false, name = "subjects")
     @NotEmpty(message = "One subject at least is required")
-    public ArrayList<Subject> subjects;
+    @OneToMany
+    public List<Subject> subjects;
 
-    @Column(name = "works")
-    public ArrayList<Work> works;
+    @OneToMany
+    public List<Work> works;
 
-    @Column(nullable = false, name = "teacherOwner")
+    @ManyToOne
     @NotEmpty(message = "Teacher Owner is required")
     Teacher teacherOwner;
 
-    @Column(nullable = false, name="status")
     StatusR statusR ;
 
     Date endDate;
 
-    public Repository(String name, ArrayList<Subject> subjects, Teacher teacherOwner){
+    public Repository(String name, List<Subject> subjects, Teacher teacherOwner){
             super();
          this.name = name;
          this.subjects = subjects;

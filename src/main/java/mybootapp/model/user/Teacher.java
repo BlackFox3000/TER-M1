@@ -7,33 +7,37 @@ import mybootapp.model.StudentList;
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
+import java.util.List;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
 @NoArgsConstructor
-public class Teacher extends UserApp {
+public class Teacher{
 
-    @Column(nullable = false, name = "subjects")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @OneToMany
     @NotEmpty(message = "One subject at least is required")
-    ArrayList<Subject> subjects;
+    List<Subject> subjects;
 
-    @Column(name = "supportedWorks")
-    ArrayList<Work> supportedWorks;
+    @OneToMany
+    List<Work> supportedWorks;
 
-    @Column(name = "repositories")
-    ArrayList<Repository> repositories;
+    @OneToMany
+    List<Repository> repositories;
 
-    @Column(name = "studentLists")
-    ArrayList<StudentList> studentLists;
+    @OneToMany(cascade = CascadeType.MERGE)
+    List<StudentList> studentLists;
 
 
-    public Teacher(ArrayList<Subject> subjects){
+    public Teacher(List<Subject> subjects){
         super();
         this.subjects = subjects;
         this.supportedWorks = new ArrayList<>();

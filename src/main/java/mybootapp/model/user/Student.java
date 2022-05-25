@@ -5,17 +5,21 @@ import mybootapp.model.Repository;
 import mybootapp.model.Work;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @Getter
-public class Student extends UserApp {
+public class Student {
 
-    @Column(name = "personnalWorks")
-    public ArrayList<Work> personnalWorks;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @OneToMany
+    public List<Work> personnalWorks;
 
     public Student(){
         super();

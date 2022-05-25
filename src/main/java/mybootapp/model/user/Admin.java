@@ -8,6 +8,9 @@ import lombok.experimental.FieldDefaults;
 import mybootapp.model.Repository;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
@@ -15,7 +18,11 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Getter
 @NoArgsConstructor
-public class Admin extends UserApp {
+public class Admin{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @NotEmpty(message = "Key authentication is required")
     int key;

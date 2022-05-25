@@ -12,30 +12,41 @@ import java.io.Serializable;
 @Data
 @Getter
 @NoArgsConstructor
-@Table(name = "users")
 public class UserApp implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "firstname")
     String firstname;
 
-    @Column(name = "lastname")
     String lastname;
 
-    @Column(nullable = false, name = "mail")
+    @Basic(optional = false)
     @NotEmpty(message = "Mail is required")
     String email;
 
-    @Column(nullable = false, name = "password")
+    @Basic(optional = false)
     @NotEmpty(message = "Password is required")
     String password;
 
-    public UserApp(String email, String password){
+    @Basic(optional = false)
+    Role role;
+
+    public UserApp(String email, String password, Role role){
         super();
         this.email = email;
         this.password = password;
+        this.role = role;
     }
+
+    public UserApp(String firstname, String lastname,String email, String password, Role role){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+
 }
