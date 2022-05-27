@@ -12,13 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
 @NoArgsConstructor
-public class Admin{
+public class Admin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +27,11 @@ public class Admin{
 
     @NotEmpty(message = "Key authentication is required")
     int key;
+
+    public Admin(int key){
+        super();
+        this.key = key;
+    }
 
     public void addAdmin(String mail){
         //aller chercher l'utilisateur dans la bdd avec le mail et le passer en admin

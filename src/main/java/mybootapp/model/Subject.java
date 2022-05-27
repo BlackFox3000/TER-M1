@@ -16,6 +16,7 @@ public class Subject implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Basic(optional = false)
     private String name;
 
     public Subject(String name) {

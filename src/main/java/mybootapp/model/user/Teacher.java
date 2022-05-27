@@ -23,17 +23,17 @@ public class Teacher{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     @NotEmpty(message = "One subject at least is required")
     List<Subject> subjects;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     List<Work> supportedWorks;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     List<Repository> repositories;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     List<StudentList> studentLists;
 
 

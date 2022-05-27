@@ -41,6 +41,7 @@ public class UserApp implements Serializable {
     }
 
     public UserApp(String firstname, String lastname,String email, String password, Role role){
+        super();
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

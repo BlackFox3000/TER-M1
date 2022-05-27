@@ -6,6 +6,7 @@ import mybootapp.model.Subject;
 import mybootapp.model.Work;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
+import mybootapp.web.service.WorkService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +36,7 @@ public class MyTest {
 		var c2 = cr.findById(c.getId());
 		assertEquals(c2.get().getName(), "Test 1");
 		System.err.printf("course id = %d\n", c.getId());
+		cr.deleteAll();
 	}
 
 	@Autowired
@@ -46,10 +48,12 @@ public class MyTest {
 		subjects.add(new Subject("Maths"));
 		wr.save(new Work("Mémoire sur le théorème de Pythagore", subjects));
 		assertInstanceOf(Optional.class,wr.findById(1L));
+		wr.deleteAll();
 	}
 
 	@Test
 	public void whenFindingAllWorks_thenCorrect() {
+		sr.deleteAll();
 		ArrayList<Subject> subjects = new ArrayList<>();
 		subjects.add(new Subject("Maths"));
 		ArrayList<Subject> subjects2 = new ArrayList<>();
@@ -57,6 +61,19 @@ public class MyTest {
 		wr.save(new Work("Mémoire sur Thalès", subjects));
 		wr.save(new Work("Mémoire sur Gauss", subjects2));
 		assertInstanceOf(List.class,wr.findAll());
+		wr.deleteAll();
+	}
+
+	@Test
+	public void whenSavingWork_thenCorrect() {
+		List<Subject> subjects = new ArrayList<>();
+		subjects.add(new Subject("Maths"));
+		Work work = new Work("pythagore", subjects);
+		wr.save(work);
+		Work work2 = wr.findById(work.getId()).orElseGet(()
+				-> new Work("thalès", subjects));
+		assertEquals(work2.getTitle(),"pythagore");
+		wr.deleteAll();
 	}
 
 	@Autowired
@@ -64,14 +81,53 @@ public class MyTest {
 
 	@Test
 	@Transactional
-	public void whenSavingWork_thenCorrect() {
-		ArrayList<Subject> subjects = new ArrayList<>();
+	public void whenSavingWork_thenCorrectandFindingSubject() {
+		List<Subject> subjects = new ArrayList<>();
 		Subject sub = new Subject("Maths");
-		sr.save(sub);
 		subjects.add(sub);
-		wr.save(new Work("pythagore", subjects));
-		Work work = wr.findById(1L).orElseGet(()
+		Work work = new Work("pythagore", subjects);
+		wr.save(work);
+		Work work2 = wr.findById(work.getId()).orElseGet(()
 				-> new Work("thalès", subjects));
-		assertEquals(work.getTitle(),"pythagore");
+		assertEquals(work2.getTitle(),"pythagore");
+		Subject subTest = sr.findById(sub.getId()).orElseGet(()
+				-> new Subject("Informatique"));;
+		assertEquals(subTest.getName(),"Maths");
+		sr.deleteAll();
+		wr.deleteAll();
 	}
+
+	@Test
+	@Transactional
+	public void whenDeletingWork_thenCorrect() {
+		List<Subject> subjects = new ArrayList<>();
+		subjects.add(new Subject("Maths"));
+		Work work = new Work("pythagore", subjects);
+		wr.save(work);
+		Work work2 = wr.findById(work.getId()).orElseGet(()
+				-> new Work("thalès", subjects));
+		assertEquals(work2.getTitle(),"pythagore");
+		wr.deleteAll();
+		work2 = wr.findById(work.getId()).orElseGet(()
+				-> new Work("thalès", subjects));
+		assertEquals(work2.getTitle(),"thalès");
+		wr.deleteAll();
+	}
+
+	@Autowired
+	WorkService ws;
+
+	@Test
+	public void workServiceWorking() {
+		List<Subject> subjects = new ArrayList<>();
+		subjects.add(new Subject("Maths"));
+		Work work = new Work("pythagore", subjects);
+		ws.save(work);
+		Work work2 = wr.findById(work.getId()).orElseGet(()
+				-> new Work("thalès", subjects));
+		assertEquals(work2.getTitle(),"pythagore");
+		ws.deleteAll();
+	}
+
+
 }

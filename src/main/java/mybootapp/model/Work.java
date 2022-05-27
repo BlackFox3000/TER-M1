@@ -22,12 +22,12 @@ public class Work implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-
+    @Basic(optional = false)
     @NotEmpty(message = "Title is required")
     String title;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     @NotEmpty(message = "One subject at least is required")
     List<Subject> subjects;
 

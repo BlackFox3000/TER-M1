@@ -26,8 +26,8 @@ public class StudentList implements Serializable {
     @Basic(optional = false)
     String name;
 
-    @JoinColumn(name = "listxx")
-    @OneToMany(cascade = CascadeType.MERGE)
+    @JoinColumn
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     public List<Student> studentList;
 
     public StudentList(List<Student> studentList){

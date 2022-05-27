@@ -27,25 +27,26 @@ public class Repository implements Serializable {
     String name;
 
     @NotEmpty(message = "One subject at least is required")
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     public List<Subject> subjects;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     public List<Work> works;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     @NotEmpty(message = "Teacher Owner is required")
     Teacher teacherOwner;
 
     StatusR statusR ;
 
+    @Basic(optional = false)
     Date endDate;
 
     public Repository(String name, List<Subject> subjects, Teacher teacherOwner){
-            super();
-         this.name = name;
-         this.subjects = subjects;
-         this.teacherOwner = teacherOwner;
+        super();
+        this.name = name;
+        this.subjects = subjects;
+        this.teacherOwner = teacherOwner;
     }
 
 }

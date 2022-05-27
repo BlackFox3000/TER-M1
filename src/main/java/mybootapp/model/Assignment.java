@@ -26,17 +26,15 @@ public class Assignment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-
     @NotEmpty(message = "A name is required")
     String name;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     public List<Teacher> teachers;
 
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     public List<Repository> repositories;
 
-    @Column(nullable = false)
     public StatusA statusA;
 
     public Assignment(String name,List<Teacher> teachers, List<Repository> repositories){
