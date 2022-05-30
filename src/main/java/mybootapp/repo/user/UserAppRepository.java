@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserAppRepository extends JpaRepository<UserApp, Long> {
     UserApp findByEmailLike(String name);
 
+
+
 }

@@ -36,7 +36,9 @@ public class Teacher{
     @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     List<StudentList> studentLists;
 
-
+    /**
+     * @param subjects
+     */
     public Teacher(List<Subject> subjects){
         super();
         this.subjects = subjects;

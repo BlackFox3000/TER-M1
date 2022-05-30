@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/")
 public class MyControler {
@@ -21,11 +23,22 @@ public class MyControler {
 	 */
 	@RequestMapping("")
 	public ModelAndView index() {
-		System.out.println("MyControler");
 		var model = new ModelAndView("index");
-		System.out.println("MyControler 2");
+		System.out.println("load index");
 
 		return model;
 	}
+
+//	@Controller
+//	// TODO: 28/05/2022   : implémenter les bonnes redirections
+//	public class DefaultController {
+//		@RequestMapping("/succeslogin")
+//		public String defaultAfterLogin(HttpServletRequest request) {
+//			if (request.isUserInRole("ROLE_ADMIN")) {
+//				return "redirect:/admin/space";
+//			}
+//			return "redirect:/user/space";
+//		}
+//	}
 
 }

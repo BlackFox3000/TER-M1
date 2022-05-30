@@ -42,6 +42,12 @@ public class Repository implements Serializable {
     @Basic(optional = false)
     Date endDate;
 
+    /**
+     *
+     * @param name
+     * @param subjects
+     * @param teacherOwner
+     */
     public Repository(String name, List<Subject> subjects, Teacher teacherOwner){
         super();
         this.name = name;

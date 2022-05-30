@@ -49,5 +49,4 @@ public class UserApp implements Serializable {
         this.role = role;
     }
 
-
 }

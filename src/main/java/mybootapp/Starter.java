@@ -25,4 +25,5 @@ public class Starter implements WebMvcConfigurer {
 		registry.addResourceHandler("/webjars/**")//
 				.addResourceLocations("/webjars/");
 	}
+
 }
