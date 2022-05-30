@@ -37,6 +37,7 @@ public class Repository implements Serializable {
     @NotEmpty(message = "Teacher Owner is required")
     Teacher teacherOwner;
 
+    @Basic(optional = false)
     StatusR statusR ;
 
     @Basic(optional = false)
@@ -53,6 +54,7 @@ public class Repository implements Serializable {
         this.name = name;
         this.subjects = subjects;
         this.teacherOwner = teacherOwner;
+        statusR = StatusR.OPEN;
     }
 
 }

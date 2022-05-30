@@ -12,7 +12,6 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
@@ -45,19 +44,5 @@ public class Teacher{
         this.supportedWorks = new ArrayList<>();
         this.repositories = new ArrayList<>();
         this.studentLists = new ArrayList<>();
-    }
-
-    public void createRepository(String name, ArrayList<Subject> subjects){
-        //mettre le nouveau repo dans la bdd
-        Repository repo = new Repository(name,subjects,this);
-        repositories.add(repo);
-    }
-
-    public void commentWork(String message, Work work){
-        work.setCommentary(work.getCommentary() + message);
-    }
-
-    public void attributeWorks(Repository repo){
-        //appeller l'algo principal
     }
 }

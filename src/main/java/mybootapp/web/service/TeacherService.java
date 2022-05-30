@@ -1,5 +1,6 @@
 package mybootapp.web.service;
 
+import mybootapp.Algo;
 import mybootapp.model.Repository;
 import mybootapp.model.StudentList;
 import mybootapp.model.Subject;
@@ -14,14 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Transactional
 public class TeacherService {
-/*
+
     @Autowired
-    TeacherService tr;
+    TeacherRepository tr;
 
     @Autowired
     SubjectRepository sr;
@@ -58,7 +60,22 @@ public class TeacherService {
     }
 
     public void update(Teacher teacher){
-        //delete();
-        //save();
-    }*/
+        tr.deleteById(teacher.getId());
+        save(teacher);
+    }
+
+    public void createRepository(String name, ArrayList<Subject> subjects,Teacher teacherOwner){
+        Repository repo = new Repository(name,subjects,teacherOwner);
+        rr.save(repo);
+        teacherOwner.getRepositories().add(repo);
+    }
+
+    public void commentWork(String message, Work work){
+        work.setCommentary(work.getCommentary() + message);
+    }
+
+    public void attributeWorks(Repository repo, ArrayList<Teacher> teachers){
+        Algo algo = new Algo();
+        algo.assignementFromRepository(repo, teachers);
+    }
 }

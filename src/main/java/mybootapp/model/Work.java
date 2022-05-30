@@ -26,14 +26,14 @@ public class Work implements Serializable {
     @NotEmpty(message = "Title is required")
     String title;
 
-
     @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     @NotEmpty(message = "One subject at least is required")
     List<Subject> subjects;
 
-
+    @Basic
     public String commentary;
 
+    @Basic(optional = false)
     public StatusW statusW;
 
     @OneToMany

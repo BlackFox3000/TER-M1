@@ -35,11 +35,17 @@ public class WorkService {
     }
 
     public void delete(Work work) {
-        wr.delete(work);
+        wr.deleteById(work.getId());
     }
 
     public void deleteAll(){
         wr.deleteAll();
     }
+
+    public void update(Work work){
+        wr.deleteById(work.getId());
+        save(work);
+   }
+
 
 }

@@ -18,8 +18,10 @@ public class UserApp implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Basic
     String firstname;
 
+    @Basic
     String lastname;
 
     @Basic(optional = false)
