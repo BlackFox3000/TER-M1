@@ -38,16 +38,47 @@ public class UserControllers {
             new Repository("exam bio",(List<Subject>) List.of(bio,orga),teacher),
             new Repository("rapport math",(List<Subject>) List.of(math,info),teacher));
 
-    @RequestMapping(value = {"/connect" }, method = RequestMethod.POST)
-    String connect(Model model){
+    @RequestMapping(value = {"/connectStudent" }, method = RequestMethod.POST)
+    String connectStudent(Model model){
         System.out.println("connexion en court");
         return us.connection();
     }
 
+    @RequestMapping(value = {"/connectTeacher" }, method = RequestMethod.POST)
+    String connectTeacher(Model model){
+        System.out.println("connexion en court");
+        return "/teacher/space";
+    }
+
+    @RequestMapping(value = {"/connectAdmin" }, method = RequestMethod.POST)
+    String connectAdmin(Model model){
+        System.out.println("connexion en court");
+        return "/admin/space";
+    }
+
+    // TODO: 30/05/2022 ajouter permission : connecter en tant qu'étudiant
     @RequestMapping(value = {"/student/space" })
     ModelAndView studentSpace(Model model){
         System.out.println("Load space student :"+works.size()+" - "+works.get(1).getTitle());
         ModelAndView modelAndView = new ModelAndView("student/space", "works",works);
+        modelAndView.addObject("repositories", repositories);
+        return modelAndView;
+    }
+
+    // TODO: 30/05/2022 ajouter permission : connecter en tant que professeur
+    @RequestMapping(value = {"/teacher/space" })
+    ModelAndView teacherSpace(Model model){
+        System.out.println("Load space student :"+works.size()+" - "+works.get(1).getTitle());
+        ModelAndView modelAndView = new ModelAndView("teacher/space", "works",works);
+        modelAndView.addObject("repositories", repositories);
+        return modelAndView;
+    }
+
+    // TODO: 30/05/2022 ajouter permission : connecter en tant qu'administrateur
+    @RequestMapping(value = {"/admin/space" })
+    ModelAndView adminSpace(Model model){
+        System.out.println("Load space student :"+works.size()+" - "+works.get(1).getTitle());
+        ModelAndView modelAndView = new ModelAndView("admin/space", "works",works);
         modelAndView.addObject("repositories", repositories);
         return modelAndView;
     }

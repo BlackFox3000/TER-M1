@@ -42,7 +42,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                <a class="nav-link disabled">Se deconnecter</a>
+                <a class="nav-link" href="/">Se deconnecter</a>
               </div>
             </div>
     <%
@@ -56,7 +56,7 @@
               <div class="navbar-nav">
                 <a class="nav-link" href="#">Gestion dépots</a>
                 <a class="nav-link" href="#">Gestion listes étudiants</a>
-                <a class="nav-link disabled">Se deconnecter</a>
+                <a class="nav-link" href="/">Se deconnecter</a>
               </div>
             </div>
     <%
@@ -71,7 +71,7 @@
                <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> --!>
                 <a class="nav-link" href="#">Créer une attribution</a>
                 <a class="nav-link" href="#">Gestion Attribution</a>
-                <a class="nav-link disabled">Se deconnecter</a>
+                <a class="nav-link" href="/">Se deconnecter</a>
               </div>
             </div>
 

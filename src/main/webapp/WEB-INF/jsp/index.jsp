@@ -60,10 +60,28 @@
 				<!-- On défini l'espace formulaire -->
 				<div class="row align-items-start">
 
-					<!-- On défini le formulaire -->
+					<!-- On défini le formulaire ========================================-->
 					<div class="col align-self-center">
 
-						<form method="POST" action="/connect">
+<!--						On défini le type de connexion en fonction de l'utilisateur-->
+						<%
+						if (request.getParameter("connect") == null) {
+						%>
+							<form method="POST" action="/connectStudent">
+						<%
+						} else if (request.getParameter("connect").equals("student")) {
+						%>
+							<form method="POST" action="/connectStudent">
+						<%
+						} else if (request.getParameter("connect").equals("teacher")) {
+						%>
+							<form method="POST" action="/connectTeacher">
+						<%
+						} else if (request.getParameter("connect").equals("admin")) {
+						%>
+							<form method="POST" action="/connectAdmin">
+						<%}%>
+<!--						Déclaration formulaire ========================================-->
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Email address</label>
 								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
