@@ -1,6 +1,7 @@
 package mybootapp.model.user;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import mybootapp.model.Repository;
 import mybootapp.model.Work;
 
@@ -10,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Data
 @Getter
@@ -25,10 +27,5 @@ public class Student implements Serializable {
     public Student(){
         super();
         this.personnalWorks = new ArrayList<>();
-    }
-
-    public void uploadWork(Repository repo, Work work){
-        repo.works.add(work);
-        personnalWorks.add(work);
     }
 }

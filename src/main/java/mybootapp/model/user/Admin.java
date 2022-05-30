@@ -30,20 +30,4 @@ public class Admin implements Serializable {
         super();
         this.key = key;
     }
-
-    public void addAdmin(String mail){
-        //aller chercher l'utilisateur dans la bdd avec le mail et le passer en admin
-    }
-
-    public void deleteAdmin(String mail){
-        //aller chercher l'admin dans la bdd avec le mail et le passer en prof
-    }
-
-    public void approveUser(String mail){
-        //valide les privilèges de l'utilisateur avec la mail
-    }
-
-    public void attributeWorks(Repository repo){
-        //appeller l'algo principal
-    }
 }

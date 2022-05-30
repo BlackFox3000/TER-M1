@@ -35,11 +35,33 @@ public class UserApp implements Serializable {
     @Basic(optional = false)
     Role role;
 
+    @OneToOne
+    Admin admin;
+
+    @OneToOne
+    Teacher teacher;
+
+    @OneToOne
+    Student student;
+
+    private void chooseRole(){
+        if(role == Role.ADMIN){
+            admin = new Admin();
+        }
+        else if(role == Role.TEACHER){
+            teacher = new Teacher();
+        }
+        else if(role == Role.STUDENT){
+            student = new Student();
+        }
+    }
+
     public UserApp(String email, String password, Role role){
         super();
         this.email = email;
         this.password = password;
         this.role = role;
+        chooseRole();
     }
 
     public UserApp(String firstname, String lastname,String email, String password, Role role){
@@ -49,6 +71,7 @@ public class UserApp implements Serializable {
         this.email = email;
         this.password = password;
         this.role = role;
+        chooseRole();
     }
 
 }

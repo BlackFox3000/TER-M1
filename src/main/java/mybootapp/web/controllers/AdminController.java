@@ -22,39 +22,39 @@ public class AdminController {
     // Gestion créations
     @RequestMapping(value = {"/addAdmin" })
     String addAdmin(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "createAdmin";
     }
 
     @RequestMapping(value = {"/addTeacher" })
     ModelAndView addTeacher(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         ModelAndView modelAndView = new ModelAndView("admin/createTeacher", "subjects",subjects);
         return modelAndView;
     }
 
     @RequestMapping(value = {"/addStudent" })
     String addStudent(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "createStudent";
     }
 
     // Gestions utilisateurs
     @RequestMapping(value = {"/manageAdmin" })
     String manageAdmin(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageAdmin";
     }
 
     @RequestMapping(value = {"/manageTeacher" })
     String manageTeacher(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageTeacher";
     }
 
     @RequestMapping(value = {"/manageStudent" })
     String manageStudent(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageStudent";
     }
 
@@ -62,7 +62,7 @@ public class AdminController {
     // Gestion autre
     @RequestMapping(value = {"/manageSubject" })
     String manageSubject(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageSubject";
     }
 
@@ -70,19 +70,19 @@ public class AdminController {
     // Gestion projets
     @RequestMapping(value = {"/manageWork" })
     String manageWork(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageWork";
     }
 
     @RequestMapping(value = {"/manageRepository" })
     String manageRepository(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageRepository";
     }
 
     @RequestMapping(value = {"/manageAssignement" })
     String manageAssignement(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "manageAssignement";
     }
 
