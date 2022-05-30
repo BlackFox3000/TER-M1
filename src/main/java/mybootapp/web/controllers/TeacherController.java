@@ -13,7 +13,7 @@ public class TeacherController {
     @Autowired
     TeacherService ts;
 
-    @RequestMapping(value = "/new-repository", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/new-repository", method = RequestMethod.GET)
     String createRepositoryButton(Model model){
         return "new-repository";
     }
@@ -21,5 +21,5 @@ public class TeacherController {
     @RequestMapping(value = "/new-repository", method = RequestMethod.GET)
     String attributeWorks(Model model){
         return "à voir";
-    }
+    }*/
 }
