@@ -1,6 +1,7 @@
 <%@ include file="../header.jsp"%>
 Espace Etudiant
 
+<!-- On défini le centre -->
 <div id="form-add-work">
     <div class="container">
         <div class="row">

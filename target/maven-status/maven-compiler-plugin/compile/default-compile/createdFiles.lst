@@ -24,6 +24,7 @@ mybootapp\model\Assignment.class
 mybootapp\model\StudentList.class
 mybootapp\web\service\UserService.class
 mybootapp\repo\AssignmentRepository.class
+mybootapp\web\controllers\AdminController.class
 mybootapp\repo\user\AdminRepository.class
 mybootapp\repo\user\StudentRepository.class
 mybootapp\web\service\TeacherService.class
