@@ -8,7 +8,6 @@ import mybootapp.model.user.Teacher;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +40,7 @@ public class Repository implements Serializable {
     StatusR statusR ;
 
     @Basic(optional = false)
+    @Temporal(TemporalType.DATE)
     Date endDate;
 
     /**

@@ -1,5 +1,6 @@
 package mybootapp.web.service;
 
+import mybootapp.model.Repository;
 import mybootapp.model.Work;
 import mybootapp.model.user.Student;
 import mybootapp.repo.WorkRepository;
@@ -40,5 +41,10 @@ public class StudentService {
     public void update(Student student){
         str.deleteById(student.getId());
         save(student);
+    }
+
+    public void uploadWork(Student student, Repository repo, Work work){
+        student.getPersonnalWorks().add(work);
+        repo.getWorks().add(work);
     }
 }
