@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -15,22 +15,40 @@
 
 <html>
 	<head>
-	<meta charset="UTF-8">
-	<title>Relecteurs AMU</title>
-	<link rel="stylesheet" href="${css}">
-	<link rel="stylesheet" href="${bootstrap_css}">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e7/1e/8b/e71e8b4d-6707-e9de-e59e-1054d974873c/source/256x256bb.jpg">
-	<script src="${jquery_js}"></script>
-	<script src="${bootstrap_js}"></script>
-</head>
-<body>
-<header>
+        <meta charset="UTF-8">
+        <title>Relecteurs AMU</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="${css}">
+        <link rel="stylesheet" href="${bootstrap_css}">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e7/1e/8b/e71e8b4d-6707-e9de-e59e-1054d974873c/source/256x256bb.jpg">
+        <script src="${jquery_js}"></script>
+        <script src="${bootstrap_js}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+<%@ include file="navbar.jsp"%>
+
+<header style="margin-top: 8vh; background-color: #35C3E7">
     <div class="header-title" style="text-align:center">
-       <h1> Site attribution de mémoires AMU <h1>
+       <h1> Site attribution de mémoires AMU </h1>
     </div>
 
-            <nav class="navbar navbar-expand-lg bg-light">
-              <div class="container-fluid">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
 
     <%
         if (request.getParameter("space") == null) {
@@ -82,6 +100,6 @@
     <%
         }
     %>
-        </nav>
+    </nav>
 
 </header>
