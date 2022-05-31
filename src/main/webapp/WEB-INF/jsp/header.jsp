@@ -8,15 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
+<c:url var="bootstrap_css" value="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+<c:url var="bootstrap_js" value="/webjars/bootstrap/5.1.3/js/bootstrap.min.js" />
 <c:url var="jquery_js" value="/webjars/jquery/3.5.1/jquery.min.js" />
-<c:url var="css" value="/style.css" />
+<c:url var="css" value="style.css" />
 
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Spring boot application</title>
+	<title>Relecteurs AMU</title>
 	<link rel="stylesheet" href="${css}">
 	<link rel="stylesheet" href="${bootstrap_css}">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e7/1e/8b/e71e8b4d-6707-e9de-e59e-1054d974873c/source/256x256bb.jpg">
 	<script src="${jquery_js}"></script>
 	<script src="${bootstrap_js}"></script>
 </head>
