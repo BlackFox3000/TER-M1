@@ -20,6 +20,14 @@ public class MyControler {
 		return model;
 	}
 
+	@RequestMapping(value = {"/home"})
+	public ModelAndView homePage(){
+		var model = new ModelAndView("home");
+		System.out.println("load home page");
+
+		return model;
+	}
+
 //	@Controller
 //	// TODO: 28/05/2022   : implémenter les bonnes redirections
 //	public class DefaultController {

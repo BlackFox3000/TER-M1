@@ -40,19 +40,19 @@ public class UserController {
 
     @RequestMapping(value = {"/connectStudent" }, method = RequestMethod.POST)
     String connectStudent(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return us.connection();
     }
 
     @RequestMapping(value = {"/connectTeacher" }, method = RequestMethod.POST)
     String connectTeacher(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "/teacher/space";
     }
 
     @RequestMapping(value = {"/connectAdmin" }, method = RequestMethod.POST)
     String connectAdmin(Model model){
-        System.out.println("connexion en court");
+        System.out.println("connexion en cours");
         return "/admin/space";
     }
 
