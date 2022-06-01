@@ -59,15 +59,11 @@ public class TeacherService {
         tr.deleteAll();
     }
 
-    public void update(Teacher teacher){
-        tr.deleteById(teacher.getId());
-        save(teacher);
-    }
-
-    public void createRepository(String name, ArrayList<Subject> subjects,Teacher teacherOwner){
-        Repository repo = new Repository(name,subjects,teacherOwner);
+    public void createRepository(Repository repo){
         rr.save(repo);
-        teacherOwner.getRepositories().add(repo);
+        if(!repo.getTeacherOwner().getRepositories().contains(repo)) {
+            repo.getTeacherOwner().getRepositories().add(repo);
+        }
     }
 
     public void commentWork(String message, Work work){

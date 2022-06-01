@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
+import mybootapp.model.user.Role;
+import mybootapp.model.user.UserApp;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
 import mybootapp.web.service.WorkService;
+import org.hsqldb.rights.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -127,6 +130,12 @@ public class MyTest {
 				-> new Work("thalès", subjects));
 		assertEquals(work2.getTitle(),"pythagore");
 		ws.deleteAll();
+	}
+
+	@Test
+	public void testUserAppTeacher(){
+		UserApp user = new UserApp("tho.ni@yahoo.fr","dfdf", Role.TEACHER);
+
 	}
 
 

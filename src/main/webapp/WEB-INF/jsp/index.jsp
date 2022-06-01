@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ include file="header.jsp"%>
 
 <c:url var="list" value="/course/list" />
@@ -98,7 +99,7 @@
 								<input type="text" class="form-control" id="secretCode">
 							</div>
 							 <% } %>
-							<button type="submit" class="btn btn-primary">se connecter</button>
+							<button type="submit" class="btn btn-primary">se connecter éééé</button>
 							<a href="forgotPassword" >mot de passe oublie?</a>
 						</form>
 					</div>

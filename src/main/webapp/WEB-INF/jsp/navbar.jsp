@@ -1,3 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
