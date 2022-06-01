@@ -1,9 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
+<%@ include file="../../headerProfile.jsp"%>
 
 manage admin
 
-<c:url var="list" value="/course/list" />
 
 <div class="container">
 	<h1>Gestion administrateur</h1>
@@ -25,4 +25,4 @@ manage admin
 	</div>
 </div>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

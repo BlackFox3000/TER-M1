@@ -1,4 +1,5 @@
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
+<%@ include file="../headerProfile.jsp"%>
 
 <div class="container">
 	<h1>Spring boot application</h1>
@@ -11,4 +12,4 @@
 	</p>
 </div>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>

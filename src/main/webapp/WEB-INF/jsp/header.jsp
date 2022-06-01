@@ -24,74 +24,8 @@
 <%@ include file="navbar.jsp"%>
 
 <header style="margin-top: 8vh; background-color: #35C3E7">
-    <div class="header-title" style="text-align:center">
-       <h1> Site attribution de mémoires AMU </h1>
+    <div class="header-title" style="text-align:center; padding-bottom: 3vh;">
+        <img width="200" height="100" src="https://upload.wikimedia.org/wikipedia/fr/thumb/d/d4/Aix-Marseille_Universit%C3%A9_%28Logo%29.svg/1200px-Aix-Marseille_Universit%C3%A9_%28Logo%29.svg.png" alt="logo-amu"/>
+       <h1 style="color: black"> Site attribution de mémoires AMU </h1>
     </div>
-
-    <div class="container">
-        <header class="d-flex justify-content-center py-3">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            </ul>
-        </header>
-    </div>
-
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-
-    <%
-        if (request.getParameter("space") == null) {
-
-    %>
-    <%
-        } else if (request.getParameter("space").equals("student")) {
-    %>
-            <a class="navbar-brand" href="/student/space?space=student">Mon espace</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link" href="/">Se deconnecter</a>
-              </div>
-            </div>
-    <%
-            } else if (request.getParameter("space").equals("teacher")) {
-    %>
-            <a class="navbar-brand" href="/">Mon espace</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link" href="#">Gestion dépots</a>
-                <a class="nav-link" href="#">Gestion listes étudiants</a>
-                <a class="nav-link" href="/">Se deconnecter</a>
-              </div>
-            </div>
-    <%
-            } else if (request.getParameter("space").equals("admin")) {
-    %>
-            <a class="navbar-brand" href="/admin/space">Mon espace</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link" href="/admin/addAssignement">Créer une attribution</a>
-                <a class="nav-link" href="/admin/manageAssignement">Gestion Attribution</a>
-                <a class="nav-link" href="/">Se deconnecter</a>
-              </div>
-            </div>
-
-
-    <%
-        }
-    %>
-    </nav>
-
 </header>

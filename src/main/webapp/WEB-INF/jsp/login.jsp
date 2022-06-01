@@ -1,13 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ include file="header.jsp"%>
+<%@ include file="headerWithoutNav.jsp"%>
 
-<c:url var="list" value="/course/list" />
-
-<div class="container">
-	<h1>Se connecter</h1>
-	<p>
-		<c:out value="${message}" />
-	</p>
+<div class="container" style="padding-top: 4vh">
+	<h1>Connexion</h1>
 
 	<!-- On défini le centre -->
 	<div class="container">
@@ -51,7 +46,7 @@
 								<% }  else { %>
 								<a class="nav-link" href="?connect=admin">
 									<% } %>
-									<h3>  Espace Administrator </h3> </a>
+									<h3>  Espace Administrateur </h3> </a>
 						</li>
 
 						<% } %>
@@ -99,7 +94,7 @@
 								<input type="text" class="form-control" id="secretCode">
 							</div>
 							 <% } %>
-							<button type="submit" class="btn btn-primary">se connecter éééé</button>
+							<button type="submit" class="btn btn-primary">se connecter</button>
 							<a href="forgotPassword" >mot de passe oublie?</a>
 						</form>
 					</div>
@@ -109,10 +104,6 @@
 			</div>
 		</div>
 	</div>
-
-	<p>
-		<a href="${list}">Course</a>
-	</p>
 </div>
 
 <%@ include file="footer.jsp"%>

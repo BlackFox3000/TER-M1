@@ -1,11 +1,13 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../../header.jsp"%>
+<%@ include file="../../headerProfile.jsp"%>
 create admin
 <div class="container">
 	<div class="row align-items-center">
 		<div class="col">
 
 			<div class="container">
-				<h2>Creer un nouveau administrateur</h2>
+				<h2>Créer un nouvel administrateur</h2>
 
 				<form method="POST" action="/createAdmin">
 					<div class="mb-3">
@@ -18,10 +20,10 @@ create admin
 						<input type="email" class="form-control" id="password">
 					</div>
 					<div class="mb-3">
-						<label for="securekey" class="form-label">Cle de securite</label>
-						<input type="email" class="form-control" id="securekey">
+						<label for="securekey" class="form-label">Clé de securite</label>
+						<input type="password" class="form-control" id="securekey">
 					</div>
-					<button type="submit" class="btn btn-primary">creer administrateur</button>
+					<button type="submit" class="btn btn-primary">Ajouter un admin</button>
 				</form>
 			</div>
 		</div>

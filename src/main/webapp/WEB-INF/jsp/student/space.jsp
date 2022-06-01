@@ -1,4 +1,5 @@
 <%@ include file="../header.jsp"%>
+<%@ include file="../headerProfile.jsp"%>
 Espace Etudiant
 
 <!-- On défini le centre -->

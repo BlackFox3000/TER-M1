@@ -1,4 +1,5 @@
 <%@ include file="../../header.jsp"%>
+<%@ include file="../../headerProfile.jsp"%>
 create student
 <div class="container">
 	<div class="row align-items-center">
