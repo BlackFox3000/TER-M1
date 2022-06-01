@@ -7,13 +7,12 @@
 <c:url var="bootstrap_css" value="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
 <c:url var="bootstrap_js" value="/webjars/bootstrap/5.1.3/js/bootstrap.min.js" />
 <c:url var="jquery_js" value="/webjars/jquery/3.5.1/jquery.min.js" />
-<c:url var="css" value="style.css" />
+<c:url var="css" value="/style.css" />
 
 <html>
 	<head>
 
         <title>Relecteurs AMU</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="${css}">
         <link rel="stylesheet" href="${bootstrap_css}">
         <link rel="icon" type="image/png" sizes="16x16" href="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e7/1e/8b/e71e8b4d-6707-e9de-e59e-1054d974873c/source/256x256bb.jpg">
@@ -77,15 +76,14 @@
     <%
             } else if (request.getParameter("space").equals("admin")) {
     %>
-            <a class="navbar-brand" href="/">Mon espace</a>
+            <a class="navbar-brand" href="/admin/space">Mon espace</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-               <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                <a class="nav-link" href="#">Créer une attribution</a>
-                <a class="nav-link" href="#">Gestion Attribution</a>
+                <a class="nav-link" href="/admin/addAssignement">Créer une attribution</a>
+                <a class="nav-link" href="/admin/manageAssignement">Gestion Attribution</a>
                 <a class="nav-link" href="/">Se deconnecter</a>
               </div>
             </div>

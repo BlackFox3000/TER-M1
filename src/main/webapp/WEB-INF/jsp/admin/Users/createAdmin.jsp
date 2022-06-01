@@ -1,4 +1,4 @@
-<%@ include file="../header.jsp"%>
+<%@ include file="../../header.jsp"%>
 create admin
 <div class="container">
 	<div class="row align-items-center">
@@ -27,4 +27,4 @@ create admin
 		</div>
 	</div>
 </div>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

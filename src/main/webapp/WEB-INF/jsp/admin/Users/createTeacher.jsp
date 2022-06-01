@@ -1,11 +1,11 @@
-<%@ include file="../header.jsp"%>
+<%@ include file="../../header.jsp"%>
 create teacher
 <div class="container">
 	<div class="row align-items-center">
 		<div class="col">
 
 			<div class="container">
-				<h2>Creer un nouveau etudiant</h2>
+				<h2>Creer un nouveau professeur</h2>
 
 				<form method="POST" action="/createTeacher">
 					<div class="mb-3">
@@ -41,4 +41,4 @@ create teacher
 		</div>
 	</div>
 </div>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../../footer.jsp"%>

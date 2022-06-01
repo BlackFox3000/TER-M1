@@ -10,7 +10,6 @@ mybootapp\web\service\StudentService.class
 mybootapp\repo\RepoRepository.class
 mybootapp\repo\StudentListRepository.class
 mybootapp\model\user\Role.class
-mybootapp\web\service\AssignmentService.class
 mybootapp\web\controllers\WorkController.class
 mybootapp\model\Repository.class
 mybootapp\web\MyControler.class
@@ -18,7 +17,6 @@ mybootapp\Starter.class
 mybootapp\model\status\StatusR.class
 mybootapp\model\status\StatusA.class
 mybootapp\web\HelloController.class
-mybootapp\web\service\RepositoryService.class
 mybootapp\repo\CourseRepository.class
 mybootapp\model\Assignment.class
 mybootapp\model\StudentList.class
@@ -30,7 +28,6 @@ mybootapp\repo\user\StudentRepository.class
 mybootapp\web\service\TeacherService.class
 mybootapp\model\status\StatusW.class
 mybootapp\repo\WorkRepository.class
-mybootapp\web\controllers\UserControllers.class
 mybootapp\model\user\UserApp.class
 mybootapp\repo\user\TeacherRepository.class
 mybootapp\model\Work.class

@@ -9,7 +9,7 @@ Espace Admin
 			<div class="container">
 				<h2>Gestion création</h2>
 				<div class="d-grid gap-2 col-6 mx-auto">
-					<a class="btn btn-primary" href="addAdmin" role="button">Ajouter un nouveau administrateur</a>
+					<a class="btn btn-primary" href="/addAdmin" role="button">Ajouter un nouveau administrateur</a>
 					<a class="btn btn-primary" href="addTeacher" role="button">Ajouter un nouveau professeur</a>
 					<a class="btn btn-primary" href="addStudent" role="button">Ajouter un nouveau etudiant</a>
 
