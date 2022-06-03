@@ -13,7 +13,7 @@ manage admin
 		<div class="row align-items-center">
 			<div class="col">
 
-				<c:forEach items="${users}" var="users">
+				<c:forEach items="${users}" var="user">
 					<p>
 						${user.firstname} ${user.lastname}
 						<a class="btn btn-primary" href="admin/editAdmin?id=${user.getAdmin().getId()}" role="button">Modifier</a>

@@ -11,22 +11,22 @@ create student
 				<form method="POST" action="/createStudent">
 					<div class="mb-3">
 						<label for="firstname" class="form-label">Prenom</label>
-						<input type="text" class="form-control" id="firstname">
+						<input type="text" class="form-control" id="firstname" required="required">
 					</div>
 					<div class="mb-3">
 						<label for="lastname" class="form-label">Nom</label>
-						<input type="text" class="form-control" id="lastname">
+						<input type="text" class="form-control" id="lastname" required="required">
 					</div>
 					<div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">Adresse mail</label>
 						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-						<div id="emailHelp" class="form-text" id="email">
+						<div id="emailHelp" class="form-text" id="email" required="required">
 					</div>
 					<div class="mb-3">
 						<label for="password" class="form-label">Mot de passe</label>
-						<input type="email" class="form-control" id="password">
+						<input type="email" class="form-control" id="password" required="required">
 					</div>
-					<button type="submit" class="btn btn-primary">creer administrateur</button>
+					<button type="submit" class="btn btn-primary">creer étudiant</button>
 				</form>
 			</div>
 		</div>
