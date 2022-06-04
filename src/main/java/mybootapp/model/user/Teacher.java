@@ -45,4 +45,12 @@ public class Teacher{
         this.repositories = new ArrayList<>();
         this.studentLists = new ArrayList<>();
     }
+
+    public Teacher(List<Subject> subjects, List<Repository> repositories){
+        super();
+        this.subjects = subjects;
+        this.supportedWorks = new ArrayList<>();
+        this.repositories = repositories;
+        this.studentLists = new ArrayList<>();
+    }
 }

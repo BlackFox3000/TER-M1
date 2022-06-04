@@ -28,4 +28,9 @@ public class Student implements Serializable {
         super();
         this.personnalWorks = new ArrayList<>();
     }
+
+    public Student(List<Work> works){
+        super();
+        this.personnalWorks = works;
+    }
 }

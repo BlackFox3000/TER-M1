@@ -25,14 +25,7 @@ public class WorkService {
     @Autowired
     SubjectRepository sr;
 
-    public void save(Work work){
-        List<Teacher> teachers = work.getCanceledTeachers();
-        List<Subject> subjects = work.getSubjects();
-
-        tr.saveAll(teachers);
-        sr.saveAll(subjects);
-        wr.save(work);
-    }
+    public void save(Work work){wr.save(work);}
 
     public void delete(Work work) {
         wr.deleteById(work.getId());
@@ -41,11 +34,5 @@ public class WorkService {
     public void deleteAll(){
         wr.deleteAll();
     }
-
-    public void update(Work work){
-        wr.deleteById(work.getId());
-        save(work);
-   }
-
 
 }

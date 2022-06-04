@@ -1,5 +1,6 @@
 package mybootapp;
 
+import com.github.javafaker.Faker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,6 +17,7 @@ import mybootapp.repo.CourseRepository;
 public class Starter implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
+		fakerData();
 		SpringApplication.run(Starter.class, args);
 	}
 
@@ -25,5 +27,12 @@ public class Starter implements WebMvcConfigurer {
 		registry.addResourceHandler("/webjars/**")//
 				.addResourceLocations("/webjars/");
 	}
+
+	public static void fakerData(){
+		FakerData fakerData = new FakerData();
+		System.out.println("email : "+fakerData.users.get(0).getEmail());
+	}
+
+
 
 }

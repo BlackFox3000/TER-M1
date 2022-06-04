@@ -55,6 +55,23 @@ public class UserApp implements Serializable {
             student = new Student();
         }
     }
+    private void chooseRoleATS(Admin admin, Teacher teacher, Student student){
+        if(role == Role.ADMIN){
+            this.admin = admin;
+            this.teacher = new Teacher();
+            this.student = new Student();
+        }
+        else if(role == Role.TEACHER){
+            this.teacher = teacher;
+            this.admin = new Admin();
+            this.student = new Student();
+        }
+        else if(role == Role.STUDENT){
+            this.student = student;
+            this.admin = new Admin();
+            this.teacher = new Teacher();
+        }
+    }
 
     public UserApp(String email, String password, Role role){
         super();
@@ -72,6 +89,16 @@ public class UserApp implements Serializable {
         this.password = password;
         this.role = role;
         chooseRole();
+    }
+
+    public UserApp(String firstname, String lastname,String email, String password, Role role, Admin admin, Teacher teacher, Student student){
+        super();
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        chooseRoleATS(admin,teacher,student);
     }
 
 }
