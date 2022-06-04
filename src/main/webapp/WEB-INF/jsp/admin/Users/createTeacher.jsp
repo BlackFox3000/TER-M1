@@ -28,14 +28,14 @@ create teacher
                         </div>
 
                         <div class="mb-3">
-                            <div class="form-check">
-                                <c:forEach items="${subjects}" var="subject">
+                            <c:forEach items="${subjects}" var="subject">
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="${subject.id}">
                                     <label class="form-check-label" for="${subject.id}">
                                         ${subject.name}
                                     </label>
-                                </c:forEach>
-                            </div>
+                                </div>
+                            </c:forEach>
                         </div>
                         <button type="submit" class="btn btn-primary">creer professeur</button>
                 </form>

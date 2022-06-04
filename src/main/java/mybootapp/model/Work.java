@@ -16,6 +16,7 @@ import java.util.List;
 @Data
 @Getter
 @NoArgsConstructor
+@ToString(exclude = "canceledTeachers")
 public class Work implements Serializable {
 
     @Id
@@ -47,4 +48,6 @@ public class Work implements Serializable {
         this.statusW = StatusW.DELIVERED;
         this.canceledTeachers = new ArrayList<>();
     }
+
+
 }

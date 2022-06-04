@@ -1,2 +1,3 @@
 mybootapp\test\MyTest.class
 mybootapp\test\CheckHTTPResponse.class
+mybootapp\test\FakerTest.class

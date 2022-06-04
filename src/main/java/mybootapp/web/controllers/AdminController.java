@@ -141,5 +141,59 @@ public class AdminController {
         return "admin/Users/manageAssignement";
     }
 
+    @RequestMapping(value = {"/detailAssignement" })
+    ModelAndView detailAssignement(Model model){
+
+        System.out.println("connexion en cours: detailAssignement");
+
+        ModelAndView modelAndView = new ModelAndView("admin/assignement/detailAssignement");
+
+        // -- test :Repository List --
+        Repository repository1 = new Repository("mon test",subjects,null);
+        Repository repository2 = new Repository("mon second",subjects,null);
+        repository2.setId(25468468468L);
+        repository1.setId(146854685L);
+        List<Repository> repositories = Arrays.asList(repository1, repository2);
+        // -- test : End RL --
+        modelAndView.addObject("repositories",repositories);
+
+        // -- test :Teacher List--
+        UserApp teacher1 = new UserApp("Marcel", "Pagnol", "mail@mail","password", Role.TEACHER);
+        UserApp teacher2 = new UserApp("Henri", "Casei", "mail@mail","password", Role.TEACHER);
+        UserApp teacher3 = new UserApp("Marc", "Malin", "mail@mail","password", Role.TEACHER);
+        UserApp teacher4 = new UserApp("Oceae", "Baneux", "mail@mail","password", Role.TEACHER);
+        teacher1.setTeacher( new Teacher(subjects) );
+        teacher1.setId(263L);
+        teacher2.setTeacher( new Teacher(subjects) );
+        teacher2.setId(25L);
+        teacher3.setTeacher( new Teacher(subjects) );
+        teacher3.setId(484L);
+        teacher4.setTeacher( new Teacher(subjects) );
+        teacher4.setId(72L);
+
+        // -- test : End TL --
+        modelAndView.addObject("teachers",Arrays.asList(teacher1,teacher2,teacher3,teacher4));
+
+        // -- test : Work List--
+        Work work1 = new Work("1er proj",subjects);
+        Work work2 = new Work("2nd projet",subjects);
+        Work work3 = new Work("le refusé",subjects);
+        work1.setId(456465L);
+        work2.setId(44442577465L);
+        work3.setId(58L);
+        work1.setCanceledTeachers(List.of(teacher1.getTeacher()));
+
+        teacher1.getTeacher().setSupportedWorks(List.of(work3));
+        teacher1.getTeacher().setSupportedWorks(List.of(work3));
+        teacher1.getTeacher().setSupportedWorks(List.of(work3));
+
+        List<Work> works = Arrays.asList(work1,work2,work3);
+        // -- test : End WL --
+
+        modelAndView.addObject("works",works);
+
+        return modelAndView;
+    }
+
 
 }

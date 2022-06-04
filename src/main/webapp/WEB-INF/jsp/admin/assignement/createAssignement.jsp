@@ -75,7 +75,7 @@
                     <script>
                         /* FCT : Repository */
                         function testBtn(){
-                            if($('#chooseRepositories option:selected').val!="none"){
+                            if($('#chooseRepositories option:selected').val()!="none"){
                                 document.getElementById('btn').disabled=false;
                             }else{
                                 document.getElementById('btn').disabled=true;
@@ -100,7 +100,7 @@
                     <script>
                         /* FCT : Teacher */
                         function testBtnTC(){
-                            if($('#chooseTeachers option:selected').val!="none"){
+                            if($('#chooseTeachers option:selected').val()!="none"){
                                 document.getElementById('btnTC').disabled=false;
                             }else{
                                 document.getElementById('btnTC').disabled=true;
