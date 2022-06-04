@@ -27,6 +27,13 @@ import java.util.function.Function;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 public class FakerData {
 
+    FakerData(){
+        initializeAdmins();
+        initializeSubjects();
+        initializeStudents();
+        initializeTeachers();
+    }
+
     Faker faker = new Faker();
 
     @Autowired
@@ -689,12 +696,5 @@ public class FakerData {
         String mail = sb.toString();
         return mail+"@gmail.com";
 
-    }
-
-    FakerData(){
-        initializeAdmins();
-        initializeSubjects();
-        initializeStudents();
-        initializeTeachers();
     }
 }

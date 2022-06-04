@@ -31,8 +31,7 @@ public class Starter implements WebMvcConfigurer {
 	public static void fakerData(){
 		FakerData fakerData = new FakerData();
 		System.out.println("email : "+fakerData.users.get(0).getEmail());
+
 	}
-
-
 
 }
