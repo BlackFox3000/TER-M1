@@ -2,9 +2,6 @@
 <%@ include file="../../header.jsp"%>
 <%@ include file="../../headerProfile.jsp"%>
 
-manage admin
-
-
 <div class="container">
 	<h1>Gestion administrateur</h1>
 
@@ -15,8 +12,8 @@ manage admin
 
 				<c:forEach items="${users}" var="user">
 					<p>
-						${user.firstname} ${user.lastname}
-						<a class="btn btn-primary" href="admin/editAdmin?id=${user.getAdmin().getId()}" role="button">Modifier</a>
+						${user.id} ${user.email}
+						<a class="btn btn-primary" href="/admin/editAdmin?id=${user.id}" role="button">Modifier</a>
 					</p>
 				</c:forEach>
 

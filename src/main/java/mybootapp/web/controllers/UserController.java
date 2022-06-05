@@ -5,6 +5,7 @@ import mybootapp.model.Subject;
 import mybootapp.model.Work;
 import mybootapp.model.user.Teacher;
 import mybootapp.model.user.UserApp;
+import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

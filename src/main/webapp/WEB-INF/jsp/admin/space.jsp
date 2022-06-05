@@ -44,7 +44,7 @@ Espace Admin
 						<a class="btn btn-primary" href="/admin/manageRepository" role="button">Gestion depots</a>
 						<a class="btn btn-primary" href="/admin/manageAssignement" role="button">Gestion attributions</a>
 					</div>
-					<p>Mémoire ou rapport de stage</p>
+					<p>* Mémoire ou rapport de stage</p>
 				</div>
 			</div>
 

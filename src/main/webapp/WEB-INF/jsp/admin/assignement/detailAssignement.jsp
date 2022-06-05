@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../../header.jsp"%>
 <%@ include file="../../headerProfile.jsp"%>
-<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <div class="container" xmlns:form="http://www.w3.org/1999/xhtml">
