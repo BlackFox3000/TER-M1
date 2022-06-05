@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="../../header.jsp"%>
 <%@ include file="../../headerProfile.jsp"%>
-
+<%@ include file="nav.jsp"%>
 <div class="container">
     <h1>Gestion listes étudiants</h1>
 

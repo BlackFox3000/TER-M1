@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../header.jsp"%>
 <%@ include file="../headerProfile.jsp"%>
-
+<%@ include file="nav.jsp"%>
 <div class="container">
     <div class="row align-items-center">
         <div class="col">

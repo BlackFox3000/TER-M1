@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../../header.jsp"%>
-<%@ include file="../../headerProfile.jsp"%>
+<%@ include file="../nav.jsp"%>
 
 
 <div class="container" xmlns:form="http://www.w3.org/1999/xhtml">

@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../header.jsp"%>
+<%@ include file="nav.jsp"%>
+Espace Admin
 <%@ include file="../headerProfile.jsp"%>
 
 <!-- On défini le centre -->
