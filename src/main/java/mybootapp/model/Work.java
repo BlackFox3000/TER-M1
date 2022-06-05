@@ -3,6 +3,7 @@ package mybootapp.model;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import mybootapp.model.status.StatusW;
+import mybootapp.model.user.Student;
 import mybootapp.model.user.Teacher;
 
 import javax.persistence.*;
@@ -30,6 +31,9 @@ public class Work implements Serializable {
     @NotEmpty(message = "One subject at least is required")
     List<Subject> subjects;
 
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
+    Student studentOwner;
+
     @Basic
     public String commentary;
 
@@ -43,6 +47,16 @@ public class Work implements Serializable {
         super();
         this.title = title;
         this.subjects = subjects;
+        this.commentary = "";
+        this.statusW = StatusW.DELIVERED;
+        this.canceledTeachers = new ArrayList<>();
+    }
+
+    public Work(String title, List<Subject> subjects, Student studentOwner){
+        super();
+        this.title = title;
+        this.subjects = subjects;
+        this.studentOwner = studentOwner;
         this.commentary = "";
         this.statusW = StatusW.DELIVERED;
         this.canceledTeachers = new ArrayList<>();
