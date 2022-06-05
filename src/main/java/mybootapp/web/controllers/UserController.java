@@ -39,6 +39,11 @@ public class UserController {
             new Repository("exam bio",(List<Subject>) List.of(bio,orga),teacher),
             new Repository("rapport math",(List<Subject>) List.of(math,info),teacher));
 
+    private static final List<Subject> subjects = Arrays.asList(
+            new Subject("Biologie"),
+            new Subject("Mathématique"),
+            new Subject("Informatique"));
+
     @RequestMapping(value = {"/connectStudent" }, method = RequestMethod.POST)
     String connectStudent(Model model){
         System.out.println("connexion en cours");
@@ -69,9 +74,22 @@ public class UserController {
     // TODO: 30/05/2022 ajouter permission : connecter en tant que professeur
     @RequestMapping(value = {"/teacher/space" })
     ModelAndView teacherSpace(Model model){
-        System.out.println("Load space student :"+works.size()+" - "+works.get(1).getTitle());
-        ModelAndView modelAndView = new ModelAndView("teacher/space", "works",works);
-        modelAndView.addObject("repositories", repositories);
+        System.out.println("connexion en cours 2");
+        Work work1 = new Work("1er proj",subjects);
+        Work work2 = new Work("2nd projet",subjects);
+        Work work3 = new Work("le refusé",subjects);
+        work1.setId(456465L);
+        work2.setId(44442577465L);
+        work3.setId(58L);
+
+        List<Work> worksNews = Arrays.asList(work1, work2);
+        List<Work> worksWait = Arrays.asList(work3, work1);
+        List<Work> worksEnd  = Arrays.asList(work2, work3);
+
+        ModelAndView modelAndView = new ModelAndView("/teacher/space","worksNews",worksNews);
+        modelAndView.addObject("worksWait",worksWait);
+        modelAndView.addObject("worksEnd",worksEnd);
+
         return modelAndView;
     }
 
