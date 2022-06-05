@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../../header.jsp"%>
-<%@ include file="../../headerProfile.jsp"%>
+<%@ include file="../nav.jsp"%>
 create admin
 <div class="container">
 	<div class="row align-items-center">
@@ -17,7 +17,7 @@ create admin
 					</div>
 					<div class="mb-3">
 						<label for="password" class="form-label">Mot de passe</label>
-						<input type="email" class="form-control" id="password" required="required">
+						<input type="password" class="form-control" id="password" required="required">
 					</div>
 					<div class="mb-3">
 						<label for="securekey" class="form-label">Clé de securite</label>

@@ -1,5 +1,5 @@
 <%@ include file="../../header.jsp"%>
-<%@ include file="../../headerProfile.jsp"%>
+<%@ include file="../nav.jsp"%>
 edit teacher
 <div class="container">
     <div class="row align-items-center">

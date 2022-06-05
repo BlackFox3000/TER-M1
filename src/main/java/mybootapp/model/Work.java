@@ -15,7 +15,6 @@ import java.util.List;
 @Entity
 @Data
 @Getter
-@NoArgsConstructor
 @ToString(exclude = "canceledTeachers")
 public class Work implements Serializable {
 
@@ -44,6 +43,13 @@ public class Work implements Serializable {
         super();
         this.title = title;
         this.subjects = subjects;
+        this.commentary = "";
+        this.statusW = StatusW.DELIVERED;
+        this.canceledTeachers = new ArrayList<>();
+    }
+
+    public Work(){
+        super();
         this.commentary = "";
         this.statusW = StatusW.DELIVERED;
         this.canceledTeachers = new ArrayList<>();

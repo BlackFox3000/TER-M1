@@ -1,5 +1,5 @@
 <%@ include file="../../header.jsp"%>
-<%@ include file="../../headerProfile.jsp"%>
+<%@ include file="../nav.jsp"%>
 create student
 <div class="container">
 	<div class="row align-items-center">
@@ -20,7 +20,7 @@ create student
 					<div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">Adresse mail</label>
 						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-						<div id="emailHelp" class="form-text" id="email" required="required">
+						<div id="emailHelp" class="form-text" id="email" required="required"/>
 					</div>
 					<div class="mb-3">
 						<label for="password" class="form-label">Mot de passe</label>
