@@ -5,10 +5,8 @@ import mybootapp.model.Assignment;
 import mybootapp.model.Repository;
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
-import mybootapp.model.user.Role;
-import mybootapp.model.user.Student;
-import mybootapp.model.user.Teacher;
-import mybootapp.model.user.UserApp;
+import mybootapp.model.user.*;
+import mybootapp.repo.RepoRepository;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
 import mybootapp.repo.user.UserAppRepository;
@@ -20,7 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,10 +39,13 @@ public class AdminController {
     UserAppRepository us;
 
     @Autowired
-    SubjectRepository ss;
+    WorkRepository wr;
 
     @Autowired
-    WorkRepository wr;
+    SubjectRepository sr;
+
+    @Autowired
+    RepoRepository rr;
 
     private static final List<Subject> subjects = Arrays.asList(
             new Subject("Biologie"),
@@ -158,9 +158,9 @@ public class AdminController {
 
     // Gestion autre
     @RequestMapping(value = {"/manageSubject" })
-    String manageSubject(Model model){
+    ModelAndView manageSubject(Model model){
         System.out.println("connexion en cours: manageSubject");
-        return "admin/Users/manageSubject";
+        return new ModelAndView("admin/subject/manageSubject","subjects",sr.findAll());
     }
 
     @RequestMapping(value = {"/addSubject" })
@@ -242,7 +242,7 @@ public class AdminController {
         repository2.setId(25468468468L);
         repository1.setId(146854685L);
         List<Repository> repositories = Arrays.asList(repository1, repository2);
-        return new ModelAndView("admin/repository/manageRepository","repositories",repositories);
+        return new ModelAndView("admin/repository/manageRepository","repositories",rr.findAll());
     }
 
     @RequestMapping(value = {"/manageAssignement" })
@@ -383,14 +383,29 @@ public class AdminController {
         return new ModelAndView("admin/work/editWork","work",work);
     }
 
-    @Autowired
-    SubjectRepository sr;
 
     @RequestMapping(value = {"/createSubject" },method = RequestMethod.POST)
     String createSubject(Model model,@RequestParam("name") String name){
-
+        /* test if not exist*/
+        System.out.println(sr.findByNameLike(name).size());
         Subject subject = new Subject(name);
         sr.save(subject);
+
+        return "admin/space";
+    }
+
+    @RequestMapping(value = {"/createAdmin" },method = RequestMethod.POST)
+    String createAdmin(Model model,
+                       @RequestParam("firstname") String firstname,
+                       @RequestParam("lastname") String lastname,
+                       @RequestParam("email") String email,
+                       @RequestParam("password") String password,
+                       @RequestParam("securekey") int securekey
+                       ){
+
+        UserApp user = new UserApp(firstname,lastname,email,password,Role.ADMIN);
+        user.setAdmin(new Admin(securekey));
+        us.save(user);
 
         return "admin/space";
     }
