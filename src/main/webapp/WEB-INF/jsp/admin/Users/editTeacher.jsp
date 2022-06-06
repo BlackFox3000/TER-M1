@@ -19,7 +19,7 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Adresse mail</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="${user.email}">
-                        <div id="emailHelp" class="form-text" id="email"></div>
+                        <div id="emailHelp" class="form-text" ></div>
 					</div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mot de passe</label>
@@ -29,10 +29,10 @@
                             <c:forEach items="${subjects}" var="subject">
                                 <div class="form-check">
                                     <c:if test='${fn:contains(user.teacher.subjects, subject)}'>
-                                    <input class="form-check-input" type="checkbox" value="" id="${subject.id}" checked>
+                                        <input name="subjects[]" class="form-check-input" type="checkbox" value="${subject.id}" id="${subject.id}" checked>
                                     </c:if>
                                     <c:if test='${not fn:contains(user.teacher.subjects, subject)}'>
-                                        <input class="form-check-input" type="checkbox" value="" id="${subject.id}" >
+                                        <input name="subjects[]" class="form-check-input" type="checkbox" value="${subject.id}" id="${subject.id}" >
                                     </c:if>
                                     <label class="form-check-label" for="${subject.id}">
                                         ${subject.name}

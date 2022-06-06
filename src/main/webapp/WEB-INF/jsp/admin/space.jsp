@@ -7,6 +7,8 @@
 	<div class="row align-items-center">
 		<div class="col">
 
+			<a class="btn btn-primary" href="/admin/faker" role="button">Simuler les données</a>
+
 			<div class="container">
 				<h2>Gestion création</h2>
 				<div class="d-grid gap-2 col-6 mx-auto">

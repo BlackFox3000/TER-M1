@@ -16,7 +16,6 @@ import mybootapp.repo.CourseRepository;
 public class Starter implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(Starter.class, args);
 	}
 

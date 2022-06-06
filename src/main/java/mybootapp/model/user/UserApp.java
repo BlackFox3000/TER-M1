@@ -91,14 +91,4 @@ public class UserApp implements Serializable {
         chooseRole();
     }
 
-    public UserApp(String firstname, String lastname,String email, String password, Role role, Admin admin, Teacher teacher, Student student){
-        super();
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        chooseRoleATS(admin,teacher,student);
-    }
-
 }

@@ -30,7 +30,7 @@
                         <div class="mb-3">
                             <c:forEach items="${subjects}" var="subject">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="subject" type="checkbox" value="" id="${subject.id}">
+                                    <input class="form-check-input" name="subjects" type="checkbox" value="${subject.id}" id="${subject.id}">
                                     <label class="form-check-label" for="${subject.id}">
                                         ${subject.name}
                                     </label>

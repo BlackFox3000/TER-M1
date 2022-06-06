@@ -7,12 +7,17 @@ import mybootapp.model.user.Teacher;
 import mybootapp.model.user.UserApp;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
-import mybootapp.repo.user.UserAppRepository;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import mybootapp.web.service.UserService;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,6 +57,38 @@ public class UserController {
             new Subject("Biologie"),
             new Subject("Mathématique"),
             new Subject("Informatique"));
+
+    protected final Log logger = LogFactory.getLog(getClass());
+
+//    @Autowired()
+//    User user1;
+//
+//    @ModelAttribute("user")
+//    public User newUser() {
+//        return user1;
+//    }
+//
+//    @RequestMapping(value = "/show")
+//    public String show() {
+//        logger.info("show user " + user1);
+//        return "user";
+//    }
+//
+//    @RequestMapping(value = "/login")
+//    public String login() {
+//        logger.info("login user " + user1);
+//        user1.setName("It's me");
+//        return "user";
+//    }
+//
+//    @RequestMapping(value = "/logout")
+//    public String logout() {
+//        logger.info("logout user " + user1);
+//        user1.setName("Anonymous");
+//        return "user";
+//    }
+
+
 
     @RequestMapping(value = {"/connectStudent" }, method = RequestMethod.POST)
     String connectStudent(Model model){

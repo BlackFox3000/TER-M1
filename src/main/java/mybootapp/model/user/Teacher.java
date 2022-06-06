@@ -22,6 +22,7 @@ public class Teacher{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    //(cascade = { CascadeType.MERGE, CascadeType.PERSIST },
     @OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
     @NotEmpty(message = "One subject at least is required")
     List<Subject> subjects;

@@ -13,6 +13,7 @@ import mybootapp.repo.user.AdminRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.AdminService;
 //import mybootapp.web.service.UserService;
+import mybootapp.web.service.StudentService;
 import mybootapp.web.service.TeacherService;
 import mybootapp.web.service.UserService;
 import org.hsqldb.rights.User;
@@ -34,9 +35,13 @@ public class AdminController {
     //FakerData fakerData = new FakerData();
 
     @RequestMapping(value = {"/faker" })
-    void addFaker(Model model){
-        FakerData fakerData = new FakerData();
+    String addFaker(Model model){
+        FakerData fakerData = new FakerData( us,  as,  sr,  wr,  ss,  rr,  ts, ur);
+        return "/admin/space";
     }
+
+    @Autowired
+    StudentService ss;
 
     @Autowired
     AdminService as;
@@ -92,69 +97,20 @@ public class AdminController {
         admin1.setId(484L);admin1.setId(8L);
         List<UserApp> users = Arrays.asList(admin1,admin2);
         //var users = us.findByRoleLike(Role.ADMIN);
-        return new ModelAndView("admin/Users/manageAdmin","users",ur.findAll());
+        return new ModelAndView("admin/Users/manageAdmin","users",ur.findByRoleLike(Role.ADMIN));
     }
 
     @RequestMapping(value = {"/manageTeacher" })
     ModelAndView manageTeacher(Model model){
         System.out.println("connexion en cours: manageTeacher");
-        UserApp teacher1 = new UserApp("Marcel", "Pagnol", "mail@mail","password", Role.TEACHER);
-        UserApp teacher2 = new UserApp("Henri", "Casei", "mail@mail","password", Role.TEACHER);
-        teacher1.setTeacher( new Teacher(subjects) );
-        teacher1.setId(484L);
-        teacher2.setTeacher( new Teacher(subjects) );
-        teacher2.setId(25L);
-
-        Repository repository = new Repository("mon premier depot", List.of(subjects.get(0)),teacher1.getTeacher());
-        Work work1 = new Work("le refusé",subjects);
-        work1.setId(456465L);
-        Work work2 = new Work("accept",subjects);
-        work2.setId(35L);
-        repository.setWorks(List.of(work1));
-        repository.setId(1L);
-        teacher1.getTeacher().setRepositories(List.of(repository));
-        teacher1.getTeacher().setSupportedWorks(List.of(work2));
-        // -- test : End TL --
-
-        List<UserApp> users = ur.findAll();
-        List<UserApp> teacher = new ArrayList<>();
-        for(UserApp user : users){
-            if(user.getRole()== Role.TEACHER){
-                teacher.add(user);
-            }
-        }
-        return new ModelAndView("admin/Users/manageTeacher","users",teacher);
+        return new ModelAndView("admin/Users/manageTeacher","users",ur.findByRoleLike(Role.TEACHER));
     }
 
     @RequestMapping(value = {"/manageStudent" })
     ModelAndView manageStudent(Model model){
         System.out.println("connexion en cours: manageStudent");
-        Work work1 = new Work("1er proj",subjects);
-        Work work2 = new Work("2nd projet",subjects);
-        Work work3 = new Work("le refusé",subjects);
-        work1.setId(456465L);
-        work2.setId(44442577465L);
-        work3.setId(58L);
-        /*wr.save(work1);
-        wr.save(work2);
-        wr.save(work3);*/
 
-        UserApp student1 = new UserApp("Marcel", "Pagnol", "mail@mail","password", Role.STUDENT);
-        UserApp student2 = new UserApp("Henri", "Casei", "mail@mail","password", Role.STUDENT);
-        //student1.setStudent( new Student(Arrays.asList(work1, work2 )) );
-        //student1.setId(484L);
-        //student2.setStudent( new Student(List.of(work3)) );
-        //student2.setId(25L);
-        us.save(student1);
-        us.save(student2);
-        List<UserApp> users = ur.findAll();
-        List<UserApp> students = new ArrayList<>();
-        for(UserApp user : users){
-            if(user.getRole()== Role.STUDENT){
-                students.add(user);
-            }
-        }
-        return new ModelAndView("admin/Users/manageStudent","users",users);
+        return new ModelAndView("admin/Users/manageStudent","users",ur.findByRoleLike(Role.STUDENT));
     }
 
     @RequestMapping(value = {"/editAdmin" },method = RequestMethod.GET)
@@ -198,7 +154,6 @@ public class AdminController {
     @RequestMapping(value = {"/addSubject" })
     ModelAndView addSubject(Model model){
         System.out.println("connexion en cours: addSubject");
-        sr.saveAll(subjects);
         return new ModelAndView("admin/subject/createSubject", "subjects",sr.findAll());
     }
 
@@ -447,12 +402,20 @@ public class AdminController {
     }
 
     @RequestMapping(value = {"/createTeacher" },method = RequestMethod.POST)
-    String createTeacher(Model model,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("subject") String subject){
+    String createTeacher(Model model,
+                         @RequestParam("firstname") String firstname,
+                         @RequestParam("lastname") String lastname,
+                         @RequestParam("email") String email,
+                         @RequestParam("password") String password,
+                         @RequestParam("subjects") List<Long> subjects){
         /* test if not exist*/
         List<Subject> sub = new ArrayList<>();
-        sub.add(sr.findByName(subject));
+        for (Long id: subjects) {
+            var result = sr.findById(id);
+            sub.add(result.get());
+        }
         Teacher teacher = new Teacher(sub);
-        ts.save(teacher);
+        //ts.save(teacher);
         UserApp userApp = new UserApp(firstname,lastname,email,password,Role.TEACHER);
         userApp.setTeacher(teacher);
         us.save(userApp);
