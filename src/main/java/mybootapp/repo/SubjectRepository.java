@@ -10,4 +10,6 @@ import java.util.List;
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
 
     List<Subject> findByNameLike(String name);
+
+    Subject findByName(String name);
 }

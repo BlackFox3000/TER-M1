@@ -5,6 +5,8 @@ import mybootapp.model.Subject;
 import mybootapp.model.Work;
 import mybootapp.model.user.Teacher;
 import mybootapp.model.user.UserApp;
+import mybootapp.repo.SubjectRepository;
+import mybootapp.repo.WorkRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.UserService;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +26,12 @@ public class UserController {
 
     @Autowired
     UserService us;
+
+    @Autowired
+    WorkRepository wr;
+
+    @Autowired
+    SubjectRepository sr;
 
     private static final UserApp user = new UserApp();
     private static final Subject bio = new Subject("Biologie");
@@ -65,9 +74,12 @@ public class UserController {
     // TODO: 30/05/2022 ajouter permission : connecter en tant qu'étudiant
     @RequestMapping(value = {"/student/space" })
     ModelAndView studentSpace(Model model){
+        Teacher teacher = new Teacher(sr.findAll());
+        List<Repository> repositories1 = new ArrayList<>();
+        Repository repository = new Repository("Maths",sr.findAll(),teacher);
         System.out.println("Load space student :"+works.size()+" - "+works.get(1).getTitle());
-        ModelAndView modelAndView = new ModelAndView("student/space", "works",works);
-        modelAndView.addObject("repositories", repositories);
+        ModelAndView modelAndView = new ModelAndView("student/space", "works",wr.findAll());
+        modelAndView.addObject("repositories", repositories1);
         return modelAndView;
     }
 
