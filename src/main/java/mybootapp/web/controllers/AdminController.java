@@ -17,10 +17,7 @@ import mybootapp.web.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -391,6 +388,19 @@ public class AdminController {
 
     @RequestMapping(value = {"/createSubject" },method = RequestMethod.POST)
     String createSubject(Model model,@RequestParam("name") String name){
+
+        Subject subject = new Subject(name);
+        sr.save(subject);
+
+        return "admin/space";
+    }
+
+    @Autowired
+    SubjectRepository sr;
+
+
+    @PostMapping("/createSubject")
+    String createSubject(@RequestBody String name){
 
         Subject subject = new Subject(name);
         sr.save(subject);
