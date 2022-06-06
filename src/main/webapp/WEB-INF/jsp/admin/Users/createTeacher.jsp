@@ -8,7 +8,7 @@
             <div class="container">
                 <h2>Creer un nouveau professeur</h2>
 
-                <form method="POST" action="/createTeacher">
+                <form method="POST" action="/admin/createTeacher">
                     <div class="mb-3">
                         <label for="firstname" class="form-label">Prenom</label>
                         <input type="text" name="firstname" class="form-control" id="firstname" required="required">
@@ -30,7 +30,7 @@
                         <div class="mb-3">
                             <c:forEach items="${subjects}" var="subject">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="name" type="checkbox" value="" id="${subject.id}">
+                                    <input class="form-check-input" name="subject" type="checkbox" value="" id="${subject.id}">
                                     <label class="form-check-label" for="${subject.id}">
                                         ${subject.name}
                                     </label>

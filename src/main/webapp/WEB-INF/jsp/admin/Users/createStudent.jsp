@@ -6,11 +6,11 @@
 		<div class="col">
 
 			<div class="container">
-				<h2>Créer un nouveau etudiant</h2>
+				<h2>Créer un nouvel etudiant</h2>
 
 				<form method="POST" action="/admin/createStudent">
 					<div class="mb-3">
-						<label for="firstname" class="form-label">Prenom</label>
+						<label for="firstname" class="form-label">Prénom</label>
 						<input type="text" name="firstname" class="form-control" id="firstname" required="required">
 					</div>
 					<div class="mb-3">

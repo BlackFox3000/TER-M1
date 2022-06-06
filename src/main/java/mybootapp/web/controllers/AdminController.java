@@ -12,7 +12,9 @@ import mybootapp.repo.WorkRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.AdminService;
 //import mybootapp.web.service.UserService;
+import mybootapp.web.service.TeacherService;
 import mybootapp.web.service.UserService;
+import org.hsqldb.rights.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,6 +56,9 @@ public class AdminController {
     @Autowired
     UserAppRepository ur;
 
+    @Autowired
+    TeacherService ts;
+
     private static final List<Subject> subjects = Arrays.asList(
             new Subject("Biologie"),
             new Subject("Mathématique"),
@@ -69,7 +74,7 @@ public class AdminController {
     @RequestMapping(value = {"/addTeacher" })
     ModelAndView addTeacher(Model model){
         System.out.println("connexion en cours: addTeacher");
-        return new ModelAndView("admin/Users/createTeacher", "subjects",subjects);
+        return new ModelAndView("admin/Users/createTeacher", "subjects",sr.findAll());
     }
 
     @RequestMapping(value = {"/addStudent" })
@@ -110,7 +115,15 @@ public class AdminController {
         teacher1.getTeacher().setRepositories(List.of(repository));
         teacher1.getTeacher().setSupportedWorks(List.of(work2));
         // -- test : End TL --
-        return new ModelAndView("admin/Users/manageTeacher","users",Arrays.asList(teacher1,teacher2));
+
+        List<UserApp> users = ur.findAll();
+        List<UserApp> teacher = new ArrayList<>();
+        for(UserApp user : users){
+            if(user.getRole()== Role.TEACHER){
+                teacher.add(user);
+            }
+        }
+        return new ModelAndView("admin/Users/manageTeacher","users",teacher);
     }
 
     @RequestMapping(value = {"/manageStudent" })
@@ -223,23 +236,11 @@ public class AdminController {
     @RequestMapping(value = {"/createAssignement" },method = RequestMethod.GET)
     @ResponseBody
     ModelAndView createAssignement(Model model,@RequestParam("name") String name){
-
-        System.out.println("connexion en cours: createAssignement");
         return new ModelAndView("admin/assignement/manageAssignement","name",name);
     }
 
     @RequestMapping(value = {"/manageWork" })
     ModelAndView manageWork(Model model){
-        System.out.println("connexion en cours: manageWork");
-        /*Work work1 = new Work("1er proj",subjects);
-        Work work2 = new Work("2nd projet",subjects);
-        Work work3 = new Work("le refusé",subjects);
-        work1.setId(456465L);
-        work2.setId(44442577465L);
-        work3.setId(58L);
-        List<Work> works = Arrays.asList(work1,work2,work3);*/
-        FakerData fakerData = new FakerData();
-        //List<Work> works = wr.findAll();
         return new ModelAndView( "admin/work/manageWork","works",wr.findAll());
     }
 
@@ -412,7 +413,6 @@ public class AdminController {
                 return "admin/space";
             }
         }
-        System.out.println(sr.findByNameLike(name).size());
         Subject subject = new Subject(name);
         sr.save(subject);
         return "admin/space";
@@ -438,6 +438,19 @@ public class AdminController {
     String createStudent(Model model,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("password") String password){
         /* test if not exist*/
         UserApp userApp = new UserApp(firstname,lastname,email,password,Role.STUDENT);
+        us.save(userApp);
+        return "admin/space";
+    }
+
+    @RequestMapping(value = {"/createTeacher" },method = RequestMethod.POST)
+    String createTeacher(Model model,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("subject") String subject){
+        /* test if not exist*/
+        List<Subject> sub = new ArrayList<>();
+        sub.add(new Subject(subject));
+        Teacher teacher = new Teacher(sub);
+        //ts.save(teacher);
+        UserApp userApp = new UserApp(firstname,lastname,email,password,Role.TEACHER);
+        userApp.setTeacher(teacher);
         us.save(userApp);
         return "admin/space";
     }
