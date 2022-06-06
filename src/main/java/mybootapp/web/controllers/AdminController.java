@@ -12,14 +12,18 @@ import mybootapp.repo.WorkRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.AdminService;
 //import mybootapp.web.service.UserService;
+import mybootapp.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,7 +40,7 @@ public class AdminController {
     AdminService as;
 
     @Autowired
-    UserAppRepository us;
+    UserService us;
 
     @Autowired
     WorkRepository wr;
@@ -46,6 +50,9 @@ public class AdminController {
 
     @Autowired
     RepoRepository rr;
+
+    @Autowired
+    UserAppRepository ur;
 
     private static final List<Subject> subjects = Arrays.asList(
             new Subject("Biologie"),
@@ -115,14 +122,26 @@ public class AdminController {
         work1.setId(456465L);
         work2.setId(44442577465L);
         work3.setId(58L);
+        /*wr.save(work1);
+        wr.save(work2);
+        wr.save(work3);*/
 
         UserApp student1 = new UserApp("Marcel", "Pagnol", "mail@mail","password", Role.STUDENT);
         UserApp student2 = new UserApp("Henri", "Casei", "mail@mail","password", Role.STUDENT);
-        student1.setStudent( new Student(Arrays.asList(work1, work2 )) );
-        student1.setId(484L);
-        student2.setStudent( new Student(List.of(work3)) );
-        student2.setId(25L);
-        return new ModelAndView("admin/Users/manageStudent","users",Arrays.asList(student1,student2));
+        //student1.setStudent( new Student(Arrays.asList(work1, work2 )) );
+        //student1.setId(484L);
+        //student2.setStudent( new Student(List.of(work3)) );
+        //student2.setId(25L);
+        us.save(student1);
+        us.save(student2);
+        List<UserApp> users = ur.findAll();
+        List<UserApp> students = new ArrayList<>();
+        for(UserApp user : users){
+            if(user.getRole()== Role.STUDENT){
+                students.add(user);
+            }
+        }
+        return new ModelAndView("admin/Users/manageStudent","users",users);
     }
 
     @RequestMapping(value = {"/editAdmin" },method = RequestMethod.GET)
@@ -387,10 +406,15 @@ public class AdminController {
     @RequestMapping(value = {"/createSubject" },method = RequestMethod.POST)
     String createSubject(Model model,@RequestParam("name") String name){
         /* test if not exist*/
+        List<Subject> subs = sr.findAll();
+        for(Subject sub : subs){
+            if(Objects.equals(sub.getName(), name)){
+                return "admin/space";
+            }
+        }
         System.out.println(sr.findByNameLike(name).size());
         Subject subject = new Subject(name);
         sr.save(subject);
-
         return "admin/space";
     }
 
@@ -409,5 +433,14 @@ public class AdminController {
 
         return "admin/space";
     }
+
+    @RequestMapping(value = {"/createStudent" },method = RequestMethod.POST)
+    String createStudent(Model model,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("password") String password){
+        /* test if not exist*/
+        UserApp userApp = new UserApp(firstname,lastname,email,password,Role.STUDENT);
+        us.save(userApp);
+        return "admin/space";
+    }
+
     
 }

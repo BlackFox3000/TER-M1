@@ -35,13 +35,13 @@ public class UserApp implements Serializable {
     @Basic(optional = false)
     Role role;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     Admin admin;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     Teacher teacher;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     Student student;
 
     private void chooseRole(){
