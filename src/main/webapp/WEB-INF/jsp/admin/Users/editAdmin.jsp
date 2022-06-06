@@ -15,7 +15,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Mot de passe</label>
-                        <input type="email" class="form-control" id="password" value="${user.password}">
+                        <input type="password" class="form-control" id="password" value="${user.password}">
                     </div>
                     <button type="submit" class="btn btn-primary">modifier administrateur</button>
                 </form>

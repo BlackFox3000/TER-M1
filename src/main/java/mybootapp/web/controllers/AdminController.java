@@ -450,9 +450,9 @@ public class AdminController {
     String createTeacher(Model model,@RequestParam("firstname") String firstname,@RequestParam("lastname") String lastname,@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("subject") String subject){
         /* test if not exist*/
         List<Subject> sub = new ArrayList<>();
-        sub.add(new Subject(subject));
+        sub.add(sr.findByName(subject));
         Teacher teacher = new Teacher(sub);
-        //ts.save(teacher);
+        ts.save(teacher);
         UserApp userApp = new UserApp(firstname,lastname,email,password,Role.TEACHER);
         userApp.setTeacher(teacher);
         us.save(userApp);
