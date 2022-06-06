@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <a class="navbar-brand" href="/">Mon espace</a>
+            <a class="navbar-brand" href="/teacher/space">Mon espace</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

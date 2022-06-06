@@ -143,10 +143,10 @@ public class TeacherController {
         UserApp user4 = new UserApp("Jean", "Grincheux", "mail@mail","password", Role.STUDENT);
         UserApp user5 = new UserApp("Manon", "Looping", "mail@mail","password", Role.STUDENT);
         user1.setId(1L);
-        user1.setId(2L);
-        user1.setId(3L);
-        user1.setId(4L);
-        user1.setId(5L);
+        user2.setId(2L);
+        user3.setId(3L);
+        user4.setId(4L);
+        user5.setId(5L);
 
         List<UserApp> students = Arrays.asList(user1,user2,user3,user4,user5);
         return new ModelAndView("teacher/createStudentList","students",students);

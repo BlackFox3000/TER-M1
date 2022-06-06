@@ -15,7 +15,7 @@ Espace Admin
 					<a class="btn btn-primary" href="/teacher/addRepository" role="button">Créer un nouveau dépôt</a>
 					<a class="btn btn-primary" href="/teacher/manageRepository" role="button">Gestion dépôts</a>
 					<a class="btn btn-primary" href="/teacher/addStudentList" role="button">Créer une liste d'étudiants</a>
-					<a class="btn btn-primary" href="/teacher/manageStudentList" role="button">Gestione listes d'étudiants</a>
+					<a class="btn btn-primary" href="/teacher/manageStudentList" role="button">Gestion listes d'étudiants</a>
 				</div>
 			</div>
 

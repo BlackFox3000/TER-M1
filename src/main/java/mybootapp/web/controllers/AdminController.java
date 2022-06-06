@@ -394,17 +394,5 @@ public class AdminController {
 
         return "admin/space";
     }
-
-    @Autowired
-    SubjectRepository sr;
-
-
-    @PostMapping("/createSubject")
-    String createSubject(@RequestBody String name){
-
-        Subject subject = new Subject(name);
-        sr.save(subject);
-
-        return "admin/space";
-    }
+    
 }
