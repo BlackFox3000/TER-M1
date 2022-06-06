@@ -6,6 +6,7 @@ mybootapp\FakerData.class
 mybootapp\repo\SubjectRepository.class
 mybootapp\model\Subject.class
 mybootapp\model\user\Student.class
+mybootapp\model\validator\AdminValidator.class
 mybootapp\model\Course.class
 mybootapp\web\service\StudentService.class
 mybootapp\repo\RepoRepository.class

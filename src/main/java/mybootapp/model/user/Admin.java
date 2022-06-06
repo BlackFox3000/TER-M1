@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import mybootapp.model.Repository;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
@@ -23,7 +25,8 @@ public class Admin implements Serializable {
     Long id;
 
     @Basic(optional = false)
-    @NotEmpty(message = "Key authentication is required")
+    @NotNull(message= "you must have secur key")
+    @Range(min = 1)
     int key;
 
     public Admin(int key){

@@ -9,6 +9,7 @@ import mybootapp.model.user.*;
 import mybootapp.repo.RepoRepository;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
+import mybootapp.repo.user.AdminRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.AdminService;
 //import mybootapp.web.service.UserService;
@@ -21,7 +22,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -92,7 +92,7 @@ public class AdminController {
         admin1.setId(484L);admin1.setId(8L);
         List<UserApp> users = Arrays.asList(admin1,admin2);
         //var users = us.findByRoleLike(Role.ADMIN);
-        return new ModelAndView("admin/Users/manageAdmin","users",users);
+        return new ModelAndView("admin/Users/manageAdmin","users",ur.findAll());
     }
 
     @RequestMapping(value = {"/manageTeacher" })
@@ -425,10 +425,14 @@ public class AdminController {
                        @RequestParam("email") String email,
                        @RequestParam("password") String password,
                        @RequestParam("securekey") int securekey
-                       ){
+    ){
 
+        Admin admin = new Admin(securekey);
+        //ar.save(admin);
         UserApp user = new UserApp(firstname,lastname,email,password,Role.ADMIN);
-        user.setAdmin(new Admin(securekey));
+        user.setAdmin(admin);
+       // user.setAdmin(new Admin(securekey));
+        System.out.println(securekey);
         us.save(user);
 
         return "admin/space";
@@ -455,5 +459,5 @@ public class AdminController {
         return "admin/space";
     }
 
-    
+
 }
