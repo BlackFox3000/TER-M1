@@ -7,34 +7,29 @@ import mybootapp.model.Repository;
 import mybootapp.model.StudentList;
 import mybootapp.model.Subject;
 import mybootapp.model.Work;
-import mybootapp.model.status.StatusR;
-import mybootapp.model.status.StatusW;
 import mybootapp.model.user.*;
 import mybootapp.repo.RepoRepository;
 import mybootapp.repo.SubjectRepository;
 import mybootapp.repo.WorkRepository;
-import mybootapp.web.service.*;
+import mybootapp.web.service.AdminService;
+import mybootapp.web.service.StudentService;
+import mybootapp.web.service.TeacherService;
+import mybootapp.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
 
 import java.util.*;
-import java.util.function.Function;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 public class FakerData {
 
-    FakerData(){
+    public FakerData(){
         initializeAdmins();
         initializeSubjects();
         initializeStudents();
         initializeTeachers();
     }
 
-    Faker faker = new Faker();
+    final Faker faker = new Faker();
 
     @Autowired
     UserService us = new UserService();
@@ -87,157 +82,8 @@ public class FakerData {
     }
 
     @Autowired
-    SubjectRepository sr = new SubjectRepository() {
-        @Override
-        public List<Subject> findByNameLike(String name) {
-            return null;
-        }
+    SubjectRepository sr;
 
-        @Override
-        public List<Subject> findAll() {
-            return null;
-        }
-
-        @Override
-        public List<Subject> findAll(Sort sort) {
-            return null;
-        }
-
-        @Override
-        public List<Subject> findAllById(Iterable<Long> longs) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> List<S> saveAll(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void flush() {
-
-        }
-
-        @Override
-        public <S extends Subject> S saveAndFlush(S entity) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> List<S> saveAllAndFlush(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void deleteAllInBatch(Iterable<Subject> entities) {
-
-        }
-
-        @Override
-        public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAllInBatch() {
-
-        }
-
-        @Override
-        public Subject getOne(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public Subject getById(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> List<S> findAll(Example<S> example) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> List<S> findAll(Example<S> example, Sort sort) {
-            return null;
-        }
-
-        @Override
-        public Page<Subject> findAll(Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> S save(S entity) {
-            return null;
-        }
-
-        @Override
-        public Optional<Subject> findById(Long aLong) {
-            return Optional.empty();
-        }
-
-        @Override
-        public boolean existsById(Long aLong) {
-            return false;
-        }
-
-        @Override
-        public long count() {
-            return 0;
-        }
-
-        @Override
-        public void deleteById(Long aLong) {
-
-        }
-
-        @Override
-        public void delete(Subject entity) {
-
-        }
-
-        @Override
-        public void deleteAllById(Iterable<? extends Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAll(Iterable<? extends Subject> entities) {
-
-        }
-
-        @Override
-        public void deleteAll() {
-
-        }
-
-        @Override
-        public <S extends Subject> Optional<S> findOne(Example<S> example) {
-            return Optional.empty();
-        }
-
-        @Override
-        public <S extends Subject> Page<S> findAll(Example<S> example, Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Subject> long count(Example<S> example) {
-            return 0;
-        }
-
-        @Override
-        public <S extends Subject> boolean exists(Example<S> example) {
-            return false;
-        }
-
-        @Override
-        public <S extends Subject, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-            return null;
-        }
-    };
     private void initializeSubjects(){
 
         Subject sub1 = new Subject("Maths");
@@ -254,162 +100,7 @@ public class FakerData {
     }
 
     @Autowired
-    WorkRepository wr = new WorkRepository() {
-        @Override
-        public List<Work> findByTitleLike(String title) {
-            return null;
-        }
-
-        @Override
-        public List<Work> findByStatusWLike(StatusW statusW) {
-            return null;
-        }
-
-        @Override
-        public List<Work> findAll() {
-            return null;
-        }
-
-        @Override
-        public List<Work> findAll(Sort sort) {
-            return null;
-        }
-
-        @Override
-        public List<Work> findAllById(Iterable<Long> longs) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> List<S> saveAll(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void flush() {
-
-        }
-
-        @Override
-        public <S extends Work> S saveAndFlush(S entity) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> List<S> saveAllAndFlush(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void deleteAllInBatch(Iterable<Work> entities) {
-
-        }
-
-        @Override
-        public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAllInBatch() {
-
-        }
-
-        @Override
-        public Work getOne(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public Work getById(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> List<S> findAll(Example<S> example) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> List<S> findAll(Example<S> example, Sort sort) {
-            return null;
-        }
-
-        @Override
-        public Page<Work> findAll(Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> S save(S entity) {
-            return null;
-        }
-
-        @Override
-        public Optional<Work> findById(Long aLong) {
-            return Optional.empty();
-        }
-
-        @Override
-        public boolean existsById(Long aLong) {
-            return false;
-        }
-
-        @Override
-        public long count() {
-            return 0;
-        }
-
-        @Override
-        public void deleteById(Long aLong) {
-
-        }
-
-        @Override
-        public void delete(Work entity) {
-
-        }
-
-        @Override
-        public void deleteAllById(Iterable<? extends Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAll(Iterable<? extends Work> entities) {
-
-        }
-
-        @Override
-        public void deleteAll() {
-
-        }
-
-        @Override
-        public <S extends Work> Optional<S> findOne(Example<S> example) {
-            return Optional.empty();
-        }
-
-        @Override
-        public <S extends Work> Page<S> findAll(Example<S> example, Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Work> long count(Example<S> example) {
-            return 0;
-        }
-
-        @Override
-        public <S extends Work> boolean exists(Example<S> example) {
-            return false;
-        }
-
-        @Override
-        public <S extends Work, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-            return null;
-        }
-    };
+    WorkRepository wr;
     private List<Work> initializeWorks(){
         List<Work> workS = new ArrayList<>();
         int max = subjects.size();
@@ -436,7 +127,7 @@ public class FakerData {
     }
 
     @Autowired
-    StudentService ss = new StudentService();
+    StudentService ss;
     private void initializeStudents(){
         for(int i = 0; i <nbStudent; i++){
 
@@ -468,177 +159,7 @@ public class FakerData {
     }
 
     @Autowired
-    RepoRepository rr = new RepoRepository() {
-        @Override
-        public List<Repository> findByNameLike(String name) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findByTeacherOwnerLike(Teacher teacher) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findByStatusRLike(StatusR statusR) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findByEndDateAfter(Date date) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findByEndDateBefore(Date date) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findAll() {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findAll(Sort sort) {
-            return null;
-        }
-
-        @Override
-        public List<Repository> findAllById(Iterable<Long> longs) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> List<S> saveAll(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void flush() {
-
-        }
-
-        @Override
-        public <S extends Repository> S saveAndFlush(S entity) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> List<S> saveAllAndFlush(Iterable<S> entities) {
-            return null;
-        }
-
-        @Override
-        public void deleteAllInBatch(Iterable<Repository> entities) {
-
-        }
-
-        @Override
-        public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAllInBatch() {
-
-        }
-
-        @Override
-        public Repository getOne(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public Repository getById(Long aLong) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> List<S> findAll(Example<S> example) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> List<S> findAll(Example<S> example, Sort sort) {
-            return null;
-        }
-
-        @Override
-        public Page<Repository> findAll(Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> S save(S entity) {
-            return null;
-        }
-
-        @Override
-        public Optional<Repository> findById(Long aLong) {
-            return Optional.empty();
-        }
-
-        @Override
-        public boolean existsById(Long aLong) {
-            return false;
-        }
-
-        @Override
-        public long count() {
-            return 0;
-        }
-
-        @Override
-        public void deleteById(Long aLong) {
-
-        }
-
-        @Override
-        public void delete(Repository entity) {
-
-        }
-
-        @Override
-        public void deleteAllById(Iterable<? extends Long> longs) {
-
-        }
-
-        @Override
-        public void deleteAll(Iterable<? extends Repository> entities) {
-
-        }
-
-        @Override
-        public void deleteAll() {
-
-        }
-
-        @Override
-        public <S extends Repository> Optional<S> findOne(Example<S> example) {
-            return Optional.empty();
-        }
-
-        @Override
-        public <S extends Repository> Page<S> findAll(Example<S> example, Pageable pageable) {
-            return null;
-        }
-
-        @Override
-        public <S extends Repository> long count(Example<S> example) {
-            return 0;
-        }
-
-        @Override
-        public <S extends Repository> boolean exists(Example<S> example) {
-            return false;
-        }
-
-        @Override
-        public <S extends Repository, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-            return null;
-        }
-    };
+    RepoRepository rr;
     private List<Repository> initializeRepositories(){
         List<Repository> repositorieS = new ArrayList<>();
         int max = subjects.size();
@@ -695,6 +216,5 @@ public class FakerData {
         }
         String mail = sb.toString();
         return mail+"@gmail.com";
-
     }
 }

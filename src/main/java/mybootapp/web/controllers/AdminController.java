@@ -1,5 +1,6 @@
 package mybootapp.web.controllers;
 
+import mybootapp.FakerData;
 import mybootapp.model.Assignment;
 import mybootapp.model.Repository;
 import mybootapp.model.Subject;
@@ -9,6 +10,7 @@ import mybootapp.model.user.Student;
 import mybootapp.model.user.Teacher;
 import mybootapp.model.user.UserApp;
 import mybootapp.repo.SubjectRepository;
+import mybootapp.repo.WorkRepository;
 import mybootapp.repo.user.UserAppRepository;
 import mybootapp.web.service.AdminService;
 //import mybootapp.web.service.UserService;
@@ -29,6 +31,13 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
+    //FakerData fakerData = new FakerData();
+
+    @RequestMapping(value = {"/faker" })
+    void addFaker(Model model){
+        FakerData fakerData = new FakerData();
+    }
+
     @Autowired
     AdminService as;
 
@@ -37,6 +46,9 @@ public class AdminController {
 
     @Autowired
     SubjectRepository ss;
+
+    @Autowired
+    WorkRepository wr;
 
     private static final List<Subject> subjects = Arrays.asList(
             new Subject("Biologie"),
@@ -157,7 +169,8 @@ public class AdminController {
     @RequestMapping(value = {"/addSubject" })
     ModelAndView addSubject(Model model){
         System.out.println("connexion en cours: addSubject");
-        return new ModelAndView("admin/subject/createSubject", "subjects",subjects);
+        sr.saveAll(subjects);
+        return new ModelAndView("admin/subject/createSubject", "subjects",sr.findAll());
     }
 
 
@@ -202,14 +215,16 @@ public class AdminController {
     @RequestMapping(value = {"/manageWork" })
     ModelAndView manageWork(Model model){
         System.out.println("connexion en cours: manageWork");
-        Work work1 = new Work("1er proj",subjects);
+        /*Work work1 = new Work("1er proj",subjects);
         Work work2 = new Work("2nd projet",subjects);
         Work work3 = new Work("le refusé",subjects);
         work1.setId(456465L);
         work2.setId(44442577465L);
         work3.setId(58L);
-        List<Work> works = Arrays.asList(work1,work2,work3);
-        return new ModelAndView( "admin/work/manageWork","works",works);
+        List<Work> works = Arrays.asList(work1,work2,work3);*/
+        FakerData fakerData = new FakerData();
+        //List<Work> works = wr.findAll();
+        return new ModelAndView( "admin/work/manageWork","works",wr.findAll());
     }
 
     @RequestMapping(value = {"/manageRepository" })
@@ -361,8 +376,7 @@ public class AdminController {
     @RequestMapping(value = {"/editSubject" })
     ModelAndView editSubject(Model model){
         System.out.println("connexion en cours: editRepository");
-        Subject subject = new Subject("test-name");
-        return new ModelAndView("admin/subject/editSubject","subject",subject);
+        Subject subject = new Subject("test-name");       return new ModelAndView("admin/subject/editSubject","subject",subject);
     }
 
     @RequestMapping(value = {"/editWork" })
@@ -370,5 +384,17 @@ public class AdminController {
         System.out.println("connexion en cours: editRepository");
         Work work = new Work("name title",subjects);
         return new ModelAndView("admin/work/editWork","work",work);
+    }
+
+    @Autowired
+    SubjectRepository sr;
+
+    @RequestMapping(value = {"/createSubject" },method = RequestMethod.POST)
+    String createSubject(Model model,@RequestParam("name") String name){
+
+        Subject subject = new Subject(name);
+        sr.save(subject);
+
+        return "admin/space";
     }
 }

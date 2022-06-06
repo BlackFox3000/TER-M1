@@ -33,7 +33,7 @@ public class Repository implements Serializable {
     public List<Work> works;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.LAZY)
-    @NotEmpty(message = "Teacher Owner is required")
+    @NotEmpty(message = "Teacher Owner i:s required")
     Teacher teacherOwner;
 
     @Basic(optional = false)
