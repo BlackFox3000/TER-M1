@@ -11,26 +11,26 @@
                 <form method="POST" action="/createTeacher">
                     <div class="mb-3">
                         <label for="firstname" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="firstname" required="required">
+                        <input type="text" name="firstname" class="form-control" id="firstname" required="required">
                     </div>
                     <div class="mb-3">
                         <label for="lastname" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="lastname" required="required">
+                        <input type="text" name="lastname" class="form-control" id="lastname" required="required">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Adresse mail</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text" id="email" required="required">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" required="required">
+                            <input type="password" name="password" class="form-control" id="password" required="required">
                         </div>
 
                         <div class="mb-3">
                             <c:forEach items="${subjects}" var="subject">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="${subject.id}">
+                                    <input class="form-check-input" name="name" type="checkbox" value="" id="${subject.id}">
                                     <label class="form-check-label" for="${subject.id}">
                                         ${subject.name}
                                     </label>
