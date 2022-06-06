@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ include file="../header.jsp"%>
 <%@ include file="nav.jsp"%>
-Espace Etudiant
 
 <!-- On défini le centre -->
 <div id="form-add-work">
@@ -9,7 +8,7 @@ Espace Etudiant
         <div class="row">
             <div class="col align-self-center">
 
-                <h2>Deposer un memoire : </h2>
+                <h2>Déposer un memoire : </h2>
 
                 <!-- On défini le formulaire -->
                 <form method="POST" action="/addWork" enctype = "multipart/form-data">
@@ -28,7 +27,7 @@ Espace Etudiant
                         </c:forEach>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">déposer mémoire</button>
+                    <button type="submit" class="btn btn-primary">Déposer mémoire</button>
                 </form>
             </div>
         </div>
@@ -36,7 +35,7 @@ Espace Etudiant
 </div>
 
 <div id="list-works">
-    <h2>Memoires deposes : </h2>
+    <h2>Mémoires déposés : </h2>
     <ul>
         <c:forEach items="${works}" var="work">
         <li>

@@ -12,12 +12,12 @@
 
                 <c:forEach items="${works}" var="work">
                     <p>
-                        ${work.id} ${work.title} ${work.statusW}
+                            ${work.title} ${work.statusW}
                         <select>
                             <option selected>Domaines</option>
-                        <c:forEach items="${work.subjects}" var="subject">
-                            <option>${subject.name}</option>
-                        </c:forEach>
+                            <c:forEach items="${work.subjects}" var="subject">
+                                <option>${subject.name}</option>
+                            </c:forEach>
                         </select>
                         ${work.commentary}
                         <a class="btn btn-primary" href="/admin/editWork?id=${work.id}" role="button">Modifier</a>

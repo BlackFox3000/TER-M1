@@ -12,7 +12,7 @@ import java.util.List;
 public interface WorkRepository extends JpaRepository<Work, Long> {
 
     List<Work> findByTitleLike(String title);
-    //List<Work> findBySubjectsLike(List<Subject> subjects);
+    List<Work> findAll();
     List<Work> findByStatusWLike(StatusW statusW);
 
 }

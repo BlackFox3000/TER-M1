@@ -1,6 +1,5 @@
 <%@ include file="../../header.jsp"%>
 <%@ include file="../nav.jsp"%>
-create student
 <div class="container">
     <div class="row align-items-center">
         <div class="col">
@@ -8,13 +7,13 @@ create student
             <div class="container">
                 <h2>Creer un nouveau domaine</h2>
 
-                <form method="POST" action="/createSubject">
+                <form action="/admin/createSubject" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="name" required="required">
+                        <input type="text" name="name" class="form-control" id="name" required="required">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">creer un domaine</button>
+                    <button type="submit" class="btn btn-primary">Ajouter un domaine</button>
                 </form>
             </div>
 
