@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "application.message",
+      "type": "java.lang.String",
+      "description": "Description for application.message."
+    },
+    {
+      "name": "application.message",
+      "type": "java.lang.String",
+      "description": "Description for application.message."
+    }
+  ] }
